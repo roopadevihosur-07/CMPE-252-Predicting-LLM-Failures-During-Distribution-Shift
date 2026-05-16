@@ -7,28 +7,28 @@ import numpy as np
 import pandas as pd
 
 
-RESULTS_ROOT = "./results/evaluations/method"
-WILDTIME_RESULTS = "./wildtime_exp3/results"
-OUT_DIR = "./experiment6_outputs"
-MAX_ITERS = 500
-LR = 0.01
-N_BINS = 15
-EPS = 1e-12
+results_root = "./results/evaluations/method"
+wildtime_results = "./wildtime_exp3/results"
+out_dir = "./experiment6_outputs"
+max_iters = 500
+lr = 0.01
+n_bins = 15
+eps = 1e-12
 
 
 def softmax(logits: np.ndarray) -> np.ndarray:
     z = logits - np.max(logits, axis=1, keepdims=True)
     exp_z = np.exp(z)
-    return exp_z / np.clip(exp_z.sum(axis=1, keepdims=True), EPS, None)
+    return exp_z / np.clip(exp_z.sum(axis=1, keepdims=True), eps, None)
 
 
 def nll_with_temperature(logits: np.ndarray, labels: np.ndarray, temperature: float) -> float:
     probs = softmax(logits / temperature)
     p_true = probs[np.arange(len(labels)), labels]
-    return float(-np.mean(np.log(np.clip(p_true, EPS, 1.0))))
+    return float(-np.mean(np.log(np.clip(p_true, eps, 1.0))))
 
 
-def compute_ece_from_probs(probs: np.ndarray, labels: np.ndarray, n_bins: int = N_BINS) -> float:
+def compute_ece_from_probs(probs: np.ndarray, labels: np.ndarray, n_bins: int = n_bins) -> float:
     confidences = np.max(probs, axis=1)
     predictions = np.argmax(probs, axis=1)
     correctness = (predictions == labels).astype(np.float64)
@@ -54,7 +54,7 @@ def compute_ece_from_probs(probs: np.ndarray, labels: np.ndarray, n_bins: int = 
     return float(ece)
 
 
-def fit_temperature(logits: np.ndarray, labels: np.ndarray, lr: float = LR, max_iters: int = MAX_ITERS) -> float:
+def fit_temperature(logits: np.ndarray, labels: np.ndarray, lr: float = lr, max_iters: int = max_iters) -> float:
     log_t = 0.0
 
     for _ in range(max_iters):
@@ -119,7 +119,7 @@ def get_exp2_calibration_and_eval_files() -> List[Tuple[str, str, List[str]]]:
 
     for source in ["dynasent", "imdb", "semeval", "sst5", "yelp"]:
         base = os.path.join(
-            RESULTS_ROOT, "SentimentAnalysis", source, "t5-small", "vanilla", "logits", "0"
+            results_root, "SentimentAnalysis", source, "t5-small", "vanilla", "logits", "0"
         )
         calib = os.path.join(base, f"{source}_logits.csv")
         evals = sorted(glob.glob(os.path.join(base, "*_logits.csv")))
@@ -128,7 +128,7 @@ def get_exp2_calibration_and_eval_files() -> List[Tuple[str, str, List[str]]]:
 
     for source in ["abuse_analyzer", "civil_comments", "implicit_hate", "toxigen"]:
         base = os.path.join(
-            RESULTS_ROOT, "ToxicDetection", source, "t5-small", "vanilla", "logits", "0"
+            results_root, "ToxicDetection", source, "t5-small", "vanilla", "logits", "0"
         )
         calib = os.path.join(base, f"{source}_logits.csv")
         evals = sorted(glob.glob(os.path.join(base, "*_logits.csv")))
@@ -137,7 +137,7 @@ def get_exp2_calibration_and_eval_files() -> List[Tuple[str, str, List[str]]]:
 
     for source in ["anli", "contract_nli", "wanli"]:
         base = os.path.join(
-            RESULTS_ROOT, "NaturalLanguageInference", source, "t5-small", "vanilla", "logits", "0"
+            results_root, "NaturalLanguageInference", source, "t5-small", "vanilla", "logits", "0"
         )
         calib = os.path.join(base, f"{source}_logits.csv")
         evals = sorted(glob.glob(os.path.join(base, "*_logits.csv")))
@@ -146,7 +146,7 @@ def get_exp2_calibration_and_eval_files() -> List[Tuple[str, str, List[str]]]:
 
     for source in ["conll", "ener", "wnut"]:
         base = os.path.join(
-            RESULTS_ROOT, "NameEntityRecognition", source, "deberta-small", "vanilla", "logits", "0"
+            results_root, "NameEntityRecognition", source, "deberta-small", "vanilla", "logits", "0"
         )
         calib = os.path.join(base, f"{source}_token_logits.csv")
         evals = sorted(glob.glob(os.path.join(base, "*_token_logits.csv")))
@@ -159,14 +159,14 @@ def get_exp2_calibration_and_eval_files() -> List[Tuple[str, str, List[str]]]:
 def get_exp3_calibration_and_eval_files() -> List[Tuple[str, str, List[str]]]:
     tasks = []
 
-    huff_val = os.path.join(WILDTIME_RESULTS, "exp3_huffpost_val_logits.csv")
-    huff_evals = sorted(glob.glob(os.path.join(WILDTIME_RESULTS, "exp3_huffpost_*_logits.csv")))
+    huff_val = os.path.join(wildtime_results, "exp3_huffpost_val_logits.csv")
+    huff_evals = sorted(glob.glob(os.path.join(wildtime_results, "exp3_huffpost_*_logits.csv")))
     huff_evals = [p for p in huff_evals if not p.endswith("val_logits.csv")]
     if os.path.exists(huff_val) and huff_evals:
         tasks.append(("exp3_huffpost", huff_val, huff_evals))
 
-    arxiv_val = os.path.join(WILDTIME_RESULTS, "exp3_arxiv_val_logits.csv")
-    arxiv_evals = sorted(glob.glob(os.path.join(WILDTIME_RESULTS, "exp3_arxiv_*_logits.csv")))
+    arxiv_val = os.path.join(wildtime_results, "exp3_arxiv_val_logits.csv")
+    arxiv_evals = sorted(glob.glob(os.path.join(wildtime_results, "exp3_arxiv_*_logits.csv")))
     arxiv_evals = [p for p in arxiv_evals if not p.endswith("val_logits.csv")]
     if os.path.exists(arxiv_val) and arxiv_evals:
         tasks.append(("exp3_arxiv", arxiv_val, arxiv_evals))
@@ -191,7 +191,7 @@ def summarize_group(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def main() -> None:
-    os.makedirs(OUT_DIR, exist_ok=True)
+    os.makedirs(out_dir, exist_ok=True)
 
     all_tasks = get_exp2_calibration_and_eval_files() + get_exp3_calibration_and_eval_files()
     if not all_tasks:
@@ -228,9 +228,9 @@ def main() -> None:
     temp_df = pd.DataFrame(temp_rows).sort_values(["group", "calibration_file"]).reset_index(drop=True)
     summary_df = summarize_group(detail_df)
 
-    detail_path = os.path.join(OUT_DIR, "exp6_ece_detail.csv")
-    temp_path = os.path.join(OUT_DIR, "exp6_temperatures.csv")
-    summary_path = os.path.join(OUT_DIR, "exp6_ece_summary.csv")
+    detail_path = os.path.join(out_dir, "exp6_ece_detail.csv")
+    temp_path = os.path.join(out_dir, "exp6_temperatures.csv")
+    summary_path = os.path.join(out_dir, "exp6_ece_summary.csv")
 
     detail_df.to_csv(detail_path, index=False)
     temp_df.to_csv(temp_path, index=False)
