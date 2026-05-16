@@ -418,7 +418,7 @@ def main():
             })
 
         print(
-            f"[{dataset_name}] "
+            f"{dataset_name}: "
             f"samples={len(outputs['labels'])} "
             f"acc={row['accuracy']:.4f} "
             f"MSP_AUROC={msp_auroc:.4f} "
