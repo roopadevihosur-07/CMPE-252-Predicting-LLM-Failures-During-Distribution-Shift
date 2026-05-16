@@ -14,7 +14,7 @@ LABEL_ID_TO_NAME = {
     2: "contradiction",
 }
 
-LABEL_NAME_TO_ID = {
+label_name_to_id = {
     "entailment": 0,
     "neutral": 1,
     "contradiction": 2,
@@ -324,7 +324,7 @@ def run_nli_experiment(
             raw_response = llm.generate(prompt)
             pred_label_name, confidence = parse_llm_response(raw_response)
 
-            pred_label_id = LABEL_NAME_TO_ID[pred_label_name] if pred_label_name is not None else None
+            pred_label_id = label_name_to_id[pred_label_name] if pred_label_name is not None else None
             correct = int(pred_label_id == int(row["label"])) if pred_label_id is not None else 0
 
             rec = {
