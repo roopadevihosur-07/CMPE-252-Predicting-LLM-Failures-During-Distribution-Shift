@@ -2,13 +2,13 @@ import re
 from typing import Dict, List, Optional, Tuple
 
 
-LABEL_ID_TO_NAME = {
+label_id_to_name = {
     0: "negative",
     1: "positive",
     2: "neutral",
 }
 
-LABEL_NAME_TO_ID = {
+label_name_to_id = {
     "negative": 0,
     "positive": 1,
     "neutral": 2,
@@ -45,7 +45,7 @@ def build_sentiment_prompt(shots: List[Dict], text: str) -> str:
     sections.append("Possible labels: negative, neutral, positive.")
 
     for shot in shots:
-        label_name = LABEL_ID_TO_NAME[int(shot["label"])]
+        label_name = label_id_to_name[int(shot["label"])]
         sections.append(
             f"Text: {shot['text']}\n"
             f"Label: {label_name}"
