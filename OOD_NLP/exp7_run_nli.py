@@ -8,7 +8,7 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 
-LABEL_ID_TO_NAME = {
+label_id_to_name = {
     0: "entailment",
     1: "neutral",
     2: "contradiction",
@@ -51,7 +51,7 @@ def build_nli_prompt(shots: List[Dict], premise: str, hypothesis: str) -> str:
     sections.append("Possible labels: entailment, neutral, contradiction.")
 
     for shot in shots:
-        label_name = LABEL_ID_TO_NAME[int(shot["label"])]
+        label_name = label_id_to_name[int(shot["label"])]
         sections.append(
             f"Premise: {shot['premise']}\n"
             f"Hypothesis: {shot['hypothesis']}\n"
@@ -337,7 +337,7 @@ def run_nli_experiment(
                 "premise": row["premise"],
                 "hypothesis": row["hypothesis"],
                 "gold_label": int(row["label"]),
-                "gold_label_name": LABEL_ID_TO_NAME[int(row["label"])],
+                "gold_label_name": label_id_to_name[int(row["label"])],
                 "predicted_label": pred_label_id,
                 "predicted_label_name": pred_label_name,
                 "confidence_numeric": confidence,
