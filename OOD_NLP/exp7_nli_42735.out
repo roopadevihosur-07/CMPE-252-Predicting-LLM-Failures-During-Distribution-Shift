@@ -3,4 +3,4 @@ Python 3.9.25
 pandas ok
 4.46.3
 2.6.0+cu124 True
-===== Running Experiment 7 NLI 4-shot ICL =====
+Running Experiment 7 NLI 4-shot ICL
