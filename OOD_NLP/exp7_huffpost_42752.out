@@ -3,7 +3,7 @@ Python 3.9.25
 pandas ok
 4.46.3
 2.6.0+cu124 True
-===== Running Experiment 7 HuffPost 4-shot ICL =====
+Running Experiment 7 HuffPost 4-shot ICL
 Saved predictions to ./experiment7_outputs/exp7_huffpost_predictions.csv
 Saved summary to ./experiment7_outputs/exp7_huffpost_summary.csv
-===== Done =====
+Done
