@@ -1,0 +1,14 @@
+ood_env/
+ood_env_broken/
+__pycache__/
+.cache/
+checkpoints/
+model_cache/
+*.pt
+*.pth
+*.bin
+*.h5
+*.npy
+*.csv
+*.log
+.DS_Store
