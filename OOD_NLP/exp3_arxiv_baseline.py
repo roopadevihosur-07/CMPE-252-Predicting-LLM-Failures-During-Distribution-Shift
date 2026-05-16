@@ -13,73 +13,62 @@ from wild_time_data import load_dataset, num_outputs
 Seed = 0
 Device = "cuda" if torch.cuda.is_available() else "cpu"
 
-TRAIN_YEARS = [2007, 2008, 2009, 2010]
-TEST_YEARS = [2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]
+train_years = [2007, 2008, 2009, 2010]
+test_years = [2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]
 
-DATA_DIR = "./wildtime_exp3/Data"
-RESULTS_DIR = "./wildtime_exp3/results"
-CKPT_DIR = "./wildtime_exp3/checkpoints"
+data_dir = "./wildtime_exp3/Data"
+results_dir = "./wildtime_exp3/results"
+ckpt_dir = "./wildtime_exp3/checkpoints"
 
-MODEL_NAME = "./model_cache/deberta-v3-small"
-BATCH_SIZE = 8
-MAX_LEN = 192
-LR = 2e-5
-EPOCHS = 2
-VAL_FRAC = 0.1
+model_name = "./model_cache/deberta-v3-small"
+batch_size = 8
+max_len = 192
+lr = 2e-5
+epochs = 2
+val_frac = 0.1
 
-os.makedirs(RESULTS_DIR, exist_ok=True)
-os.makedirs(CKPT_DIR, exist_ok=True)
-def save_logits_csv(model, dataloader, device, out_csv):
+os.makedirs(results_dir, exist_ok=True)
+os.makedirs(ckpt_dir, exist_ok=True)
+def saveLogitsCSV(model, dataloader, device, outCSV):
     model.eval()
-    all_logits = []
-    all_labels = []
+    allLogits = []
+    allLabels = []
 
     with torch.no_grad():
-        for batch in dataloader:
-            if isinstance(batch, dict):
-                input_ids = batch["input_ids"].to(device)
-                attention_mask = batch["attention_mask"].to(device)
-                labels = batch["labels"].to(device)
+    for batch in dataloader:
+        if isinstance(batch, dict):
+            input_ids = batch["input_ids"]
+            attention_mask = batch["attention_mask"]
+            labels = batch["labels"]
 
-            elif isinstance(batch, (list, tuple)):
-                if len(batch) == 3:
-                    input_ids, attention_mask, labels = batch
-                    input_ids = input_ids.to(device)
-                    attention_mask = attention_mask.to(device)
-                    labels = labels.to(device)
+        elif isinstance(batch, (list, tuple)) and len(batch) == 3:
+            input_ids, attention_mask, labels = batch
 
-                elif len(batch) == 2:
-                    first, second = batch
+        else:
+            first, labels = batch
+            input_ids = first["input_ids"]
+            attention_mask = first["attention_mask"]
 
-                    if hasattr(first, "keys") and "input_ids" in first and "attention_mask" in first:
-                        input_ids = first["input_ids"].to(device)
-                        attention_mask = first["attention_mask"].to(device)
-                        labels = second.to(device)
-                    else:
-                        raise ValueError(f"This is an unsupported 2-item batch format: first element type = {type(first)}")
+        input_ids = input_ids.to(device)
+        attention_mask = attention_mask.to(device)
+        labels = labels.to(device)
 
-                else:
-                    raise ValueError(f"This is an unsupported batch length: {len(batch)}")
+        outputs = model(input_ids=input_ids, attention_mask=attention_mask)
+        logits = outputs.logits
 
-            else:
-                raise ValueError(f"This is an unsupported batch type: {type(batch)}")
+        allLogits.append(logits.detach().cpu())
+        allLabels.append(labels.detach().cpu())
 
-            outputs = model(input_ids=input_ids, attention_mask=attention_mask)
-            logits = outputs.logits
-
-            all_logits.append(logits.detach().cpu())
-            all_labels.append(labels.detach().cpu())
-
-    logits = torch.cat(all_logits, dim=0).numpy()
-    labels = torch.cat(all_labels, dim=0).numpy()
+    logits = torch.cat(allLogits, dim=0).numpy()
+    labels = torch.cat(allLabels, dim=0).numpy()
 
     data = {"true_label": labels.tolist()}
     for i in range(logits.shape[1]):
         data[f"logit_{i}"] = logits[:, i].tolist()
 
-    os.makedirs(os.path.dirname(out_csv), exist_ok=True)
-    pd.DataFrame(data).to_csv(out_csv, index=False)
-    print(f"Saved logits to {out_csv}", flush=True)
+    os.makedirs(os.path.dirname(outCSV), exist_ok=True)
+    pd.DataFrame(data).to_csv(outCSV, index=False)
+    print(f"Saved the logits to {outCSV}", flush=True)
 
 
 def set_seed(seed=0):
@@ -107,7 +96,7 @@ def make_concat_dataset(years, split):
             dataset_name="arxiv",
             time_step=y,
             split=split,
-            data_dir=DATA_DIR
+            data_dir=data_dir
         )
         parts.append(TextLabelDataset(ds))
     return ConcatDataset(parts)
@@ -128,7 +117,7 @@ def collate_fn(batch, tokenizer):
         list(texts),
         padding=True,
         truncation=True,
-        max_length=MAX_LEN,
+        max_length=max_len,
         return_tensors="pt"
     )
     labels = torch.tensor(labels, dtype=torch.long)
@@ -156,7 +145,7 @@ def compute_ece(probs, labels, n_bins=15):
 def evaluate(model, loader):
     model.eval()
     all_probs = []
-    all_labels = []
+    allLabels = []
 
     with torch.no_grad():
         for enc, labels in loader:
@@ -167,10 +156,10 @@ def evaluate(model, loader):
             probs = torch.softmax(out.logits, dim=-1)
 
             all_probs.append(probs.cpu().numpy())
-            all_labels.append(labels.cpu().numpy())
+            allLabels.append(labels.cpu().numpy())
 
     probs = np.concatenate(all_probs, axis=0)
-    labels = np.concatenate(all_labels, axis=0)
+    labels = np.concatenate(allLabels, axis=0)
 
     preds = probs.argmax(axis=1)
     acc = float((preds == labels).mean() * 100.0)
@@ -180,19 +169,19 @@ def evaluate(model, loader):
 def train():
     set_seed(Seed)
 
-    print("TRAIN_YEARS =", TRAIN_YEARS, flush=True)
-    print("TEST_YEARS =", TEST_YEARS, flush=True)
+    print("train_years =", train_years, flush=True)
+    print("test_years =", test_years, flush=True)
     print("Loading tokenizer from local cache...", flush=True)
 
     tokenizer = AutoTokenizer.from_pretrained(
-        MODEL_NAME,
+        model_name,
         local_files_only=True,
         use_fast=False
     )
 
     print("Building full training dataset...", flush=True)
-    full_train = make_concat_dataset(TRAIN_YEARS, split="train")
-    train_ds, val_ds = split_train_val(full_train, val_frac=VAL_FRAC, seed=Seed)
+    full_train = make_concat_dataset(train_years, split="train")
+    train_ds, val_ds = split_train_val(full_train, val_frac=val_frac, seed=Seed)
 
     print("full_train len =", len(full_train), flush=True)
     print("train_ds len =", len(train_ds), flush=True)
@@ -200,13 +189,13 @@ def train():
 
     train_loader = DataLoader(
         train_ds,
-        batch_size=BATCH_SIZE,
+        batch_size=batch_size,
         shuffle=True,
         collate_fn=lambda b: collate_fn(b, tokenizer)
     )
     val_loader = DataLoader(
         val_ds,
-        batch_size=BATCH_SIZE,
+        batch_size=batch_size,
         shuffle=False,
         collate_fn=lambda b: collate_fn(b, tokenizer)
     )
@@ -229,7 +218,7 @@ def train():
     assert max_label < num_labels, f"Found label {max_label} but num_labels={num_labels}"
 
     model = AutoModelForSequenceClassification.from_pretrained(
-        MODEL_NAME,
+        model_name,
         num_labels=num_labels,
         local_files_only=True,
         ignore_mismatched_sizes=True
@@ -237,12 +226,12 @@ def train():
 
     print("classifier weight shape =", model.classifier.weight.shape, flush=True)
 
-    optimizer = torch.optim.AdamW(model.parameters(), lr=LR)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=lr)
 
     best_val_acc = -1.0
-    best_path = os.path.join(CKPT_DIR, "exp3_arxiv_best.pt")
+    best_path = os.path.join(ckpt_dir, "exp3_arxiv_best.pt")
 
-    for epoch in range(EPOCHS):
+    for epoch in range(epochs):
         model.train()
         total_loss = 0.0
         steps = 0
@@ -277,31 +266,31 @@ def train():
 
     model.load_state_dict(torch.load(best_path, map_location=Device))
 
-    save_logits_csv(model, val_loader, Device, "./wildtime_exp3/results/exp3_arxiv_val_logits.csv")
+    saveLogitsCSV(model, val_loader, Device, "./wildtime_exp3/results/exp3_arxiv_val_logits.csv")
 
-    out_path = os.path.join(RESULTS_DIR, "exp3_arxiv_results.csv")
+    out_path = os.path.join(results_dir, "exp3_arxiv_results.csv")
     with open(out_path, "w", encoding="utf-8") as f:
         f.write("dataset,train_years,test_year,time_gap,accuracy,ece\n")
-        for year in TEST_YEARS:
+        for year in test_years:
             print(f"Evaluating test year {year}", flush=True)
             test_ds = TextLabelDataset(load_dataset(
                 dataset_name="arxiv",
                 time_step=year,
                 split="test",
-                data_dir=DATA_DIR
+                data_dir=data_dir
             ))
             test_loader = DataLoader(
                 test_ds,
-                batch_size=BATCH_SIZE,
+                batch_size=batch_size,
                 shuffle=False,
                 collate_fn=lambda b: collate_fn(b, tokenizer)
             )
 
             acc, ece = evaluate(model, test_loader)
-            gap = year - max(TRAIN_YEARS)
-            save_logits_csv(model, test_loader, Device, f"./wildtime_exp3/results/exp3_arxiv_{year}_logits.csv")
+            gap = year - max(train_years)
+            saveLogitsCSV(model, test_loader, Device, f"./wildtime_exp3/results/exp3_arxiv_{year}_logits.csv")
             print(f"test_year={year}, gap={gap}, acc={acc:.2f}, ece={ece:.4f}", flush=True)
-            f.write(f"arxiv,\"{TRAIN_YEARS}\",{year},{gap},{acc:.4f},{ece:.6f}\n")
+            f.write(f"arxiv,\"{train_years}\",{year},{gap},{acc:.4f},{ece:.6f}\n")
 
     print(f"Saved results to {out_path}", flush=True)
 
