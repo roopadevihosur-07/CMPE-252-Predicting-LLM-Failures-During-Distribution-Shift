@@ -206,7 +206,7 @@ def main():
         rows.append(row)
 
         print(
-            f"[{name}] samples={len(labels)} "
+            f"{name}: samples={len(labels)} "
             f"ECE_before={ece_before:.6f} "
             f"ECE_after={ece_after:.6f} "
             f"reduction={reduction:.6f}",
