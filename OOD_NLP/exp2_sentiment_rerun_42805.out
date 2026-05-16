@@ -2,7 +2,7 @@ Job started on g2.hpc.coe
 Started at Fri May 15 01:57:14 AM PDT 2026
 Python: /home/017309357/252Proj/OOD_NLP/ood_env/bin/python
 transformers 4.46.3
-===== IMDB =====
+IMDB
 set seed: 0
 set seed: 0
 imdb
