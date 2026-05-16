@@ -7,8 +7,8 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from exp7_prompting import (
-    LABEL_ID_TO_NAME,
-    LABEL_NAME_TO_ID,
+    label_id_to_name,
+    label_name_to_id,
     build_sentiment_prompt,
     parse_llm_response,
 )
@@ -128,7 +128,7 @@ def run_sentiment_experiment(
                 if m:
                     confidence = float(max(0, min(100, int(m.group(1)))))
 
-            pred_label_id = LABEL_NAME_TO_ID[pred_label_name] if pred_label_name is not None else None
+            pred_label_id = label_name_to_id[pred_label_name] if pred_label_name is not None else None
             correct = int(pred_label_id == rec["gold_label"]) if pred_label_id is not None else 0
 
             row = {
@@ -140,7 +140,7 @@ def run_sentiment_experiment(
                 "example_id": rec["example_id"],
                 "text": rec["text"],
                 "gold_label": rec["gold_label"],
-                "gold_label_name": LABEL_ID_TO_NAME[rec["gold_label"]],
+                "gold_label_name": label_id_to_name[rec["gold_label"]],
                 "predicted_label": pred_label_id,
                 "predicted_label_name": pred_label_name,
                 "confidence_numeric": confidence,
