@@ -1,3 +1,5 @@
+This is the Readme of the dataset that we decided to use for our project, and it details how the dataset should be downloaded.
+
 This reposition contains code and data for paper "[Revisiting Out-of-distribution Robustness in NLP: Benchmarks, Analysis, and LLMs Evaluations](https://arxiv.org/abs/2306.04618)".
 
 # Datasets
