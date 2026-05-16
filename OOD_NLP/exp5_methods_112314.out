@@ -4,11 +4,11 @@ Using device: cuda
 Loaded model from: ./experiment4_cnn_outputs/best_textcnn.pt
 Fitting Mahalanobis statistics from training features...
 Finished Mahalanobis fitting.
-[dynasent] samples=4320 acc=0.3815 MSP_AUROC=0.5288 Mahalanobis_AUROC=0.4901 Energy_AUROC=0.4552
-[imdb] samples=25000 acc=0.3529 MSP_AUROC=0.5749 Mahalanobis_AUROC=0.3986 Energy_AUROC=0.2889
-[semeval] samples=20632 acc=0.3904 MSP_AUROC=0.4916 Mahalanobis_AUROC=0.5121 Energy_AUROC=0.5193
-[sst5] samples=1067 acc=0.4686 MSP_AUROC=0.6201 Mahalanobis_AUROC=0.4591 Energy_AUROC=0.3931
-[yelp] samples=30000 acc=0.6840 MSP_AUROC=0.7176 Mahalanobis_AUROC=0.4625 Energy_AUROC=0.2812
+dynasent: samples=4320 acc=0.3815 MSP_AUROC=0.5288 Mahalanobis_AUROC=0.4901 Energy_AUROC=0.4552
+imdb: samples=25000 acc=0.3529 MSP_AUROC=0.5749 Mahalanobis_AUROC=0.3986 Energy_AUROC=0.2889
+semeval: samples=20632 acc=0.3904 MSP_AUROC=0.4916 Mahalanobis_AUROC=0.5121 Energy_AUROC=0.5193
+sst5: samples=1067 acc=0.4686 MSP_AUROC=0.6201 Mahalanobis_AUROC=0.4591 Energy_AUROC=0.3931
+yelp: samples=30000 acc=0.6840 MSP_AUROC=0.7176 Mahalanobis_AUROC=0.4625 Energy_AUROC=0.2812
 Saved summary to: ./experiment5_outputs/experiment5_method_comparison.csv
 Saved per-example scores to: ./experiment5_outputs/experiment5_prediction_scores.csv
 Done.
