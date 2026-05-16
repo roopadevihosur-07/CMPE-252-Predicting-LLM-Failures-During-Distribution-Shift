@@ -6,4 +6,4 @@ transformers ok
 Running Experiment 7 Sentiment 4-shot ICL
 Saved predictions to ./experiment7_outputs/exp7_sentiment_predictions_dynasent.csv
 Saved summary to ./experiment7_outputs/exp7_sentiment_summary_dynasent.csv
-===== Done =====
+Done
