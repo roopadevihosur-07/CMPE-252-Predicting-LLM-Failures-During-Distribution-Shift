@@ -1,8 +1,8 @@
 /home/017309357/252Proj/OOD_NLP/ood_env/bin/python
 Python 3.9.25
 pandas ok
-===== Running Experiment 6 Temperature Scaling =====
+Running Experiment 6 Temperature Scaling
 Saved detailed results to ./experiment6_outputs/exp6_ece_detail.csv
 Saved temperatures to ./experiment6_outputs/exp6_temperatures.csv
 Saved summary to ./experiment6_outputs/exp6_ece_summary.csv
-===== Done =====
+Done
