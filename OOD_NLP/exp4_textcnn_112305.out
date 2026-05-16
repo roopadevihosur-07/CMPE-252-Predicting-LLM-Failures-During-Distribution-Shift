@@ -1,0 +1,38 @@
+Job started on condo1
+CUDA_VISIBLE_DEVICES=1
+Using device: cuda
+Loaded train dataset: amazon
+Train samples: 30000
+Label mapping: {'0': 0, '1': 1, '2': 2}
+Vocab size: 50000
+Epoch 1/10 - train_loss: 0.928525
+Saved best model to ./experiment4_cnn_outputs/best_textcnn.pt
+Epoch 2/10 - train_loss: 0.750300
+Saved best model to ./experiment4_cnn_outputs/best_textcnn.pt
+Epoch 3/10 - train_loss: 0.655187
+Saved best model to ./experiment4_cnn_outputs/best_textcnn.pt
+Epoch 4/10 - train_loss: 0.569616
+Saved best model to ./experiment4_cnn_outputs/best_textcnn.pt
+Epoch 5/10 - train_loss: 0.476311
+Saved best model to ./experiment4_cnn_outputs/best_textcnn.pt
+Epoch 6/10 - train_loss: 0.396662
+Saved best model to ./experiment4_cnn_outputs/best_textcnn.pt
+Epoch 7/10 - train_loss: 0.328009
+Saved best model to ./experiment4_cnn_outputs/best_textcnn.pt
+Epoch 8/10 - train_loss: 0.273170
+Saved best model to ./experiment4_cnn_outputs/best_textcnn.pt
+Epoch 9/10 - train_loss: 0.219562
+Saved best model to ./experiment4_cnn_outputs/best_textcnn.pt
+Epoch 10/10 - train_loss: 0.191676
+Saved best model to ./experiment4_cnn_outputs/best_textcnn.pt
+Loaded best model for evaluation.
+[amazon] samples=38905 acc=0.7079 mean_msp=0.8698 ece=0.1663
+Skipping dsc: no labels matched training label space.
+[dynasent] samples=25000 acc=0.3864 mean_msp=0.8594 ece=0.4729
+[imdb] samples=25000 acc=0.3864 mean_msp=0.8594 ece=0.4729
+[semeval] samples=30000 acc=0.6945 mean_msp=0.8760 ece=0.1815
+Skipping sst5: no labels matched training label space.
+[yelp] samples=30000 acc=0.6945 mean_msp=0.8760 ece=0.1815
+Saved metrics to: ./experiment4_cnn_outputs/experiment4_metrics.csv
+Saved predictions to: ./experiment4_cnn_outputs/experiment4_predictions.csv
+Done.

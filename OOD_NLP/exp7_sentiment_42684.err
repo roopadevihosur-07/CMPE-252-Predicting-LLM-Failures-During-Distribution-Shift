@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/fs/atipa/home/017309357/252Proj/OOD_NLP/exp7_run_sentiment.py", line 9, in <module>
+    from exp7_prompting import (
+  File "/fs/atipa/home/017309357/252Proj/OOD_NLP/exp7_prompting.py", line 53
+    f"Text: {shot['text']}
+                          ^
+SyntaxError: EOL while scanning string literal

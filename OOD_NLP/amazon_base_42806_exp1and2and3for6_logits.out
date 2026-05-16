@@ -1,0 +1,1230 @@
+/home/017309357/252Proj/OOD_NLP/ood_env/bin/python
+Python 3.9.25
+pandas ok
+Experiment 1
+set seed: 0
+set seed: 0
+amazon
+29999
+Load plm from cache
+evaluation
+load tokenized test dataset of amazon
+load tokenized test dataset of dsc
+load tokenized test dataset of dynasent
+load tokenized test dataset of imdb
+load tokenized test dataset of semeval
+load tokenized test dataset of sst5
+load tokenized test dataset of yelp
+Performance:
+acc on amazon: 85.50277606415793
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/amazon/t5-small/vanilla/logits/0/amazon_logits.csv
+acc on dsc: 90.42580868961929
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/amazon/t5-small/vanilla/logits/0/dsc_logits.csv
+acc on dynasent: 44.18981481481482
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/amazon/t5-small/vanilla/logits/0/dynasent_logits.csv
+acc on imdb: 85.92
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/amazon/t5-small/vanilla/logits/0/imdb_logits.csv
+acc on semeval: 49.13241566498643
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/amazon/t5-small/vanilla/logits/0/semeval_logits.csv
+acc on sst5: 67.94751640112464
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/amazon/t5-small/vanilla/logits/0/sst5_logits.csv
+acc on yelp: 81.76
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/amazon/t5-small/vanilla/logits/0/yelp_logits.csv
+finish evaluation
+set seed: 0
+set seed: 0
+civil_comments
+60000
+Load plm from cache
+evaluation
+load tokenized test dataset of adv_civil
+load tokenized test dataset of civil_comments
+load tokenized test dataset of implicit_hate
+load tokenized test dataset of toxigen
+Performance:
+acc on adv_civil: 73.42105263157895
+saved scores/logits csv: ./results/evaluations/method/ToxicDetection/civil_comments/t5-small/vanilla/logits/0/adv_civil_logits.csv
+acc on civil_comments: 81.47040690505548
+saved scores/logits csv: ./results/evaluations/method/ToxicDetection/civil_comments/t5-small/vanilla/logits/0/civil_comments_logits.csv
+acc on implicit_hate: 56.890130353817504
+saved scores/logits csv: ./results/evaluations/method/ToxicDetection/civil_comments/t5-small/vanilla/logits/0/implicit_hate_logits.csv
+acc on toxigen: 62.659574468085104
+saved scores/logits csv: ./results/evaluations/method/ToxicDetection/civil_comments/t5-small/vanilla/logits/0/toxigen_logits.csv
+finish evaluation
+set seed: 0
+set seed: 0
+mnli
+392662
+Load plm from cache
+evaluation
+load tokenized test dataset of anli
+load tokenized test dataset of contract_nli
+load tokenized test dataset of mnli
+load tokenized test dataset of wanli
+Performance:
+acc on anli: 29.53125
+saved scores/logits csv: ./results/evaluations/method/NaturalLanguageInference/mnli/t5-small/vanilla/logits/0/anli_logits.csv
+acc on contract_nli: 35.77235772357724
+saved scores/logits csv: ./results/evaluations/method/NaturalLanguageInference/mnli/t5-small/vanilla/logits/0/contract_nli_logits.csv
+acc on mnli: 82.11920529801324
+saved scores/logits csv: ./results/evaluations/method/NaturalLanguageInference/mnli/t5-small/vanilla/logits/0/mnli_logits.csv
+acc on wanli: 54.06
+saved scores/logits csv: ./results/evaluations/method/NaturalLanguageInference/mnli/t5-small/vanilla/logits/0/wanli_logits.csv
+finish evaluation
+set seed: 0
+fewnerd
+131767
+Load plm from cache
+evaluation
+load tokenized test dataset of conll
+load tokenized test dataset of ener
+load tokenized test dataset of fewnerd
+load tokenized test dataset of wnut
+Performance:
+saved ner token scores csv: ./results/evaluations/method/NameEntityRecognition/fewnerd/deberta-small/vanilla/logits/0/conll_token_logits.csv
+f1 on conll: 0.6504406210658833
+saved ner token scores csv: ./results/evaluations/method/NameEntityRecognition/fewnerd/deberta-small/vanilla/logits/0/ener_token_logits.csv
+f1 on ener: 0.5303379416282642
+saved ner token scores csv: ./results/evaluations/method/NameEntityRecognition/fewnerd/deberta-small/vanilla/logits/0/fewnerd_token_logits.csv
+f1 on fewnerd: 0.7895911990856561
+saved ner token scores csv: ./results/evaluations/method/NameEntityRecognition/fewnerd/deberta-small/vanilla/logits/0/wnut_token_logits.csv
+f1 on wnut: 0.40817518248175183
+finish evaluation
+set seed: 0
+squad
+87599
+Load plm from cache
+evaluation
+load tokenized test dataset of advqa
+load tokenized test dataset of searchqa
+load tokenized test dataset of squad
+Performance:
+saved qa scores csv: ./results/evaluations/method/QuestionAnswering/squad/t5-small/vanilla/scores/0/advqa_qa_scores.csv
+79 predictions not in the context, 79/3000=0.026333333333333334
+exact_match on advqa: 17.7
+f1 on advqa: 27.250188371161883
+saved qa scores csv: ./results/evaluations/method/QuestionAnswering/squad/t5-small/vanilla/scores/0/searchqa_qa_scores.csv
+1426 predictions not in the context, 1426/14359=0.09931053694546974
+exact_match on searchqa: 5.877846646702417
+f1 on searchqa: 11.62259858478213
+saved qa scores csv: ./results/evaluations/method/QuestionAnswering/squad/t5-small/vanilla/scores/0/squad_qa_scores.csv
+90 predictions not in the context, 90/10570=0.008514664143803218
+exact_match on squad: 77.16177861873226
+f1 on squad: 85.60595179671971
+finish evaluation
+Experiment 2
+Sentiment
+set seed: 0
+set seed: 0
+dynasent
+93553
+Load plm from cache
+evaluation
+load tokenized test dataset of amazon
+load tokenized test dataset of dsc
+load tokenized test dataset of dynasent
+load tokenized test dataset of imdb
+load tokenized test dataset of semeval
+load tokenized test dataset of sst5
+load tokenized test dataset of yelp
+Performance:
+acc on amazon: 81.08163684968126
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/dynasent/t5-small/vanilla/logits/0/amazon_logits.csv
+acc on dsc: 85.31783886913537
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/dynasent/t5-small/vanilla/logits/0/dsc_logits.csv
+acc on dynasent: 70.64814814814815
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/dynasent/t5-small/vanilla/logits/0/dynasent_logits.csv
+acc on imdb: 82.172
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/dynasent/t5-small/vanilla/logits/0/imdb_logits.csv
+acc on semeval: 64.03644823575029
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/dynasent/t5-small/vanilla/logits/0/semeval_logits.csv
+acc on sst5: 63.54264292408622
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/dynasent/t5-small/vanilla/logits/0/sst5_logits.csv
+acc on yelp: 62.00333333333333
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/dynasent/t5-small/vanilla/logits/0/yelp_logits.csv
+finish evaluation
+set seed: 0
+set seed: 0
+imdb
+25000
+Train from scratch
+Epoch 0, average loss: 0.6470060348510742
+Epoch 0, average loss: 0.5682637086685967
+Epoch 0, average loss: 0.5191411493290768
+Epoch 0, average loss: 0.48855444186965363
+Epoch 0, average loss: 0.4672947852914013
+Epoch 0, average loss: 0.4536678296517566
+Epoch 0, average loss: 0.4437013746570313
+Epoch 0, average loss: 0.4326745376118228
+Epoch 0, average loss: 0.4239034790480672
+Epoch 0, average loss: 0.419356211483016
+Epoch 0, average loss: 0.4148584293525019
+Epoch 0, average loss: 0.41066481198054045
+Epoch 0, average loss: 0.4057270555560184
+Epoch 0, average loss: 0.40256876774281036
+Epoch 0, average loss: 0.3981663253631299
+Epoch 0, average loss: 0.39447652496962987
+Epoch 1, average loss: 0.2651165723800659
+Epoch 1, average loss: 0.3405050087501021
+Epoch 1, average loss: 0.32515067461472336
+Epoch 1, average loss: 0.3274849113570341
+Epoch 1, average loss: 0.332540336134496
+Epoch 1, average loss: 0.32692051090418817
+Epoch 1, average loss: 0.32710037325382035
+Epoch 1, average loss: 0.3268478150582976
+Epoch 1, average loss: 0.321632082571747
+Epoch 1, average loss: 0.3237998098291936
+Epoch 1, average loss: 0.32417141083635376
+Epoch 1, average loss: 0.32333487964247076
+Epoch 1, average loss: 0.3224187546166376
+Epoch 1, average loss: 0.3225789968290591
+Epoch 1, average loss: 0.32190404850697296
+Epoch 1, average loss: 0.3210181131185133
+Epoch 2, average loss: 0.2683998718857765
+Epoch 2, average loss: 0.30273698124231074
+Epoch 2, average loss: 0.3047303754725669
+Epoch 2, average loss: 0.3018689387977518
+Epoch 2, average loss: 0.29755767071573297
+Epoch 2, average loss: 0.30064824070647894
+Epoch 2, average loss: 0.300772400702848
+Epoch 2, average loss: 0.3019380154475527
+Epoch 2, average loss: 0.30100845907840346
+Epoch 2, average loss: 0.29893598895511714
+Epoch 2, average loss: 0.2987783151398043
+Epoch 2, average loss: 0.298624260141472
+Epoch 2, average loss: 0.2956467489750681
+Epoch 2, average loss: 0.2939723807683189
+Epoch 2, average loss: 0.29480315192194706
+Epoch 2, average loss: 0.29505369449890007
+Epoch 3, average loss: 0.239481583237648
+Epoch 3, average loss: 0.29609748377811673
+Epoch 3, average loss: 0.29479757875277857
+Epoch 3, average loss: 0.2920986564077486
+Epoch 3, average loss: 0.288210072846555
+Epoch 3, average loss: 0.28599899492237674
+Epoch 3, average loss: 0.2846436037301423
+Epoch 3, average loss: 0.28262784473194696
+Epoch 3, average loss: 0.2849742151945458
+Epoch 3, average loss: 0.28468432355085654
+Epoch 3, average loss: 0.28181674838541987
+Epoch 3, average loss: 0.28267906965204465
+Epoch 3, average loss: 0.2828100459702846
+Epoch 3, average loss: 0.2829200502559428
+Epoch 3, average loss: 0.28189036410604834
+Epoch 3, average loss: 0.28356103864455035
+Epoch 4, average loss: 0.3690953999757767
+Epoch 4, average loss: 0.28152697036663693
+Epoch 4, average loss: 0.26736156177697795
+Epoch 4, average loss: 0.2683199705642383
+Epoch 4, average loss: 0.2717987242622755
+Epoch 4, average loss: 0.2728599601043054
+Epoch 4, average loss: 0.271000217275069
+Epoch 4, average loss: 0.27108489026307553
+Epoch 4, average loss: 0.2713512236442872
+Epoch 4, average loss: 0.27292832054049104
+Epoch 4, average loss: 0.27124040642243896
+Epoch 4, average loss: 0.270383981805288
+Epoch 4, average loss: 0.2710604825879938
+Epoch 4, average loss: 0.2713986083825109
+Epoch 4, average loss: 0.2711167957118251
+Epoch 4, average loss: 0.27190094963509776
+Epoch 5, average loss: 0.12130902335047722
+Epoch 5, average loss: 0.25505265823620205
+Epoch 5, average loss: 0.2733318372122427
+Epoch 5, average loss: 0.2661608075414667
+Epoch 5, average loss: 0.26457079277554557
+Epoch 5, average loss: 0.26329182369627085
+Epoch 5, average loss: 0.2628860988675855
+Epoch 5, average loss: 0.2632648227497553
+Epoch 5, average loss: 0.26170377038474985
+Epoch 5, average loss: 0.2623684042259357
+Epoch 5, average loss: 0.2646024730911631
+Epoch 5, average loss: 0.26361742285426754
+Epoch 5, average loss: 0.2634612362732655
+Epoch 5, average loss: 0.26249003593456544
+Epoch 5, average loss: 0.26425203101473
+Epoch 5, average loss: 0.2627548083176864
+Epoch 6, average loss: 0.30201464891433716
+Epoch 6, average loss: 0.26645899889077623
+Epoch 6, average loss: 0.2604766415229233
+Epoch 6, average loss: 0.260722184788115
+Epoch 6, average loss: 0.2598115138301802
+Epoch 6, average loss: 0.2587920637630609
+Epoch 6, average loss: 0.25703211870056847
+Epoch 6, average loss: 0.25722039163250615
+Epoch 6, average loss: 0.25446468513421805
+Epoch 6, average loss: 0.25429657733319805
+Epoch 6, average loss: 0.25565652402969236
+Epoch 6, average loss: 0.2543352686794992
+Epoch 6, average loss: 0.2548524472589749
+Epoch 6, average loss: 0.2537594417399067
+Epoch 6, average loss: 0.25345266577037057
+Epoch 6, average loss: 0.2525727126174439
+Epoch 7, average loss: 0.3735574334859848
+Epoch 7, average loss: 0.262486833421623
+Epoch 7, average loss: 0.24238663248828438
+Epoch 7, average loss: 0.2427623018634734
+Epoch 7, average loss: 0.2435907664667092
+Epoch 7, average loss: 0.24640516992806794
+Epoch 7, average loss: 0.2496841001011852
+Epoch 7, average loss: 0.24745279254704883
+Epoch 7, average loss: 0.24558235728820585
+Epoch 7, average loss: 0.24555606416275852
+Epoch 7, average loss: 0.24510504989262052
+Epoch 7, average loss: 0.2453052461664522
+Epoch 7, average loss: 0.2456733142467411
+Epoch 7, average loss: 0.24690675255506314
+Epoch 7, average loss: 0.24593600898332757
+Epoch 7, average loss: 0.24504125836279278
+Epoch 8, average loss: 0.3372208774089813
+Epoch 8, average loss: 0.23701321048771634
+Epoch 8, average loss: 0.24240768656577213
+Epoch 8, average loss: 0.24151982898694396
+Epoch 8, average loss: 0.23979771263267272
+Epoch 8, average loss: 0.24103505202973508
+Epoch 8, average loss: 0.2387276550761093
+Epoch 8, average loss: 0.24059723869518
+Epoch 8, average loss: 0.2394620943744841
+Epoch 8, average loss: 0.23811366137513632
+Epoch 8, average loss: 0.2372155449336428
+Epoch 8, average loss: 0.2337012739451484
+Epoch 8, average loss: 0.23508424235092548
+Epoch 8, average loss: 0.2352060469592737
+Epoch 8, average loss: 0.23378144755770855
+Epoch 8, average loss: 0.23414304452798218
+Epoch 9, average loss: 0.24252557009458542
+Epoch 9, average loss: 0.20570139145003816
+Epoch 9, average loss: 0.21228598312723754
+Epoch 9, average loss: 0.22469951455413506
+Epoch 9, average loss: 0.22639508478677095
+Epoch 9, average loss: 0.2328741988575316
+Epoch 9, average loss: 0.23318732135072104
+Epoch 9, average loss: 0.23386342952988426
+Epoch 9, average loss: 0.23603146513018228
+Epoch 9, average loss: 0.23349005812593218
+Epoch 9, average loss: 0.23339327303748467
+Epoch 9, average loss: 0.23392104157863586
+Epoch 9, average loss: 0.23285201771305672
+Epoch 9, average loss: 0.23344964930464365
+Epoch 9, average loss: 0.23173304679491338
+Epoch 9, average loss: 0.2318491964463328
+save model
+finish training
+evaluation
+load tokenized test dataset of amazon
+load tokenized test dataset of dsc
+load tokenized test dataset of dynasent
+load tokenized test dataset of imdb
+load tokenized test dataset of semeval
+load tokenized test dataset of sst5
+load tokenized test dataset of yelp
+Performance:
+acc on amazon: 85.75210775241621
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/imdb/t5-small/vanilla/logits/0/amazon_logits.csv
+acc on dsc: 87.95421038938514
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/imdb/t5-small/vanilla/logits/0/dsc_logits.csv
+acc on dynasent: 43.773148148148145
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/imdb/t5-small/vanilla/logits/0/dynasent_logits.csv
+acc on imdb: 90.14
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/imdb/t5-small/vanilla/logits/0/imdb_logits.csv
+acc on semeval: 40.5825901512214
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/imdb/t5-small/vanilla/logits/0/semeval_logits.csv
+acc on sst5: 57.357075913776946
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/imdb/t5-small/vanilla/logits/0/sst5_logits.csv
+acc on yelp: 62.38
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/imdb/t5-small/vanilla/logits/0/yelp_logits.csv
+finish evaluation
+set seed: 0
+set seed: 0
+semeval
+6000
+Train from scratch
+Epoch 0, average loss: 1.4783662557601929
+Epoch 0, average loss: 1.1200058840069116
+Epoch 0, average loss: 1.0653153029408786
+Epoch 0, average loss: 1.035057834836821
+Epoch 1, average loss: 0.9163195788860321
+Epoch 1, average loss: 0.9414132126406127
+Epoch 1, average loss: 0.9337907097127178
+Epoch 1, average loss: 0.9330433251841969
+Epoch 2, average loss: 0.8306972980499268
+Epoch 2, average loss: 0.9043465075539607
+Epoch 2, average loss: 0.905024931867524
+Epoch 2, average loss: 0.8968982645217946
+Epoch 3, average loss: 0.7428546249866486
+Epoch 3, average loss: 0.849609855927673
+Epoch 3, average loss: 0.8714504206534659
+Epoch 3, average loss: 0.8708672657707669
+Epoch 4, average loss: 0.6613199710845947
+Epoch 4, average loss: 0.8313845296700796
+Epoch 4, average loss: 0.8469144796380902
+Epoch 4, average loss: 0.8537576048579437
+Epoch 5, average loss: 0.8741801083087921
+Epoch 5, average loss: 0.8372411687000125
+Epoch 5, average loss: 0.8287690160888257
+Epoch 5, average loss: 0.8385944563821451
+Epoch 6, average loss: 0.9433465600013733
+Epoch 6, average loss: 0.866725866408909
+Epoch 6, average loss: 0.849914678547642
+Epoch 6, average loss: 0.8431737244326547
+Epoch 7, average loss: 0.7176998555660248
+Epoch 7, average loss: 0.8339429152946846
+Epoch 7, average loss: 0.8221031678195047
+Epoch 7, average loss: 0.8174892969873567
+Epoch 8, average loss: 0.8730774223804474
+Epoch 8, average loss: 0.8312895894050598
+Epoch 8, average loss: 0.8259967422426338
+Epoch 8, average loss: 0.8127930970578794
+Epoch 9, average loss: 0.6369474232196808
+Epoch 9, average loss: 0.8130589375893275
+Epoch 9, average loss: 0.8092237049990362
+Epoch 9, average loss: 0.8112792441781783
+save model
+finish training
+evaluation
+load tokenized test dataset of amazon
+load tokenized test dataset of dsc
+load tokenized test dataset of dynasent
+load tokenized test dataset of imdb
+load tokenized test dataset of semeval
+load tokenized test dataset of sst5
+load tokenized test dataset of yelp
+Performance:
+acc on amazon: 84.0916101172116
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/semeval/t5-small/vanilla/logits/0/amazon_logits.csv
+acc on dsc: 83.05437516260515
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/semeval/t5-small/vanilla/logits/0/dsc_logits.csv
+acc on dynasent: 47.03703703703704
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/semeval/t5-small/vanilla/logits/0/dynasent_logits.csv
+acc on imdb: 80.936
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/semeval/t5-small/vanilla/logits/0/imdb_logits.csv
+acc on semeval: 56.02462194649089
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/semeval/t5-small/vanilla/logits/0/semeval_logits.csv
+acc on sst5: 61.48078725398313
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/semeval/t5-small/vanilla/logits/0/sst5_logits.csv
+acc on yelp: 60.51
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/semeval/t5-small/vanilla/logits/0/yelp_logits.csv
+finish evaluation
+set seed: 0
+set seed: 0
+sst5
+4004
+Train from scratch
+Epoch 0, average loss: 1.3741541504859924
+Epoch 0, average loss: 1.1570189916620068
+Epoch 0, average loss: 1.08850292138534
+Epoch 1, average loss: 0.9428505003452301
+Epoch 1, average loss: 0.9702350228440528
+Epoch 1, average loss: 0.945031613111496
+Epoch 2, average loss: 0.8310176134109497
+Epoch 2, average loss: 0.8683996627143785
+Epoch 2, average loss: 0.8597998034836042
+Epoch 3, average loss: 0.8678393959999084
+Epoch 3, average loss: 0.8376890967289606
+Epoch 3, average loss: 0.8273218815574551
+Epoch 4, average loss: 0.7130852341651917
+Epoch 4, average loss: 0.794683072496863
+Epoch 4, average loss: 0.7876755453572415
+Epoch 5, average loss: 0.8316169381141663
+Epoch 5, average loss: 0.7831640518179127
+Epoch 5, average loss: 0.7663583315835141
+Epoch 6, average loss: 0.7770755589008331
+Epoch 6, average loss: 0.7548555065603817
+Epoch 6, average loss: 0.7365745319293278
+Epoch 7, average loss: 0.6964174509048462
+Epoch 7, average loss: 0.7154843138129103
+Epoch 7, average loss: 0.7304439870732846
+Epoch 8, average loss: 0.8008577525615692
+Epoch 8, average loss: 0.6894431844645855
+Epoch 8, average loss: 0.6970914968169561
+Epoch 9, average loss: 0.7549619674682617
+Epoch 9, average loss: 0.703456823440159
+Epoch 9, average loss: 0.6939485648480972
+save model
+finish training
+evaluation
+load tokenized test dataset of amazon
+load tokenized test dataset of dsc
+load tokenized test dataset of dynasent
+load tokenized test dataset of imdb
+load tokenized test dataset of semeval
+load tokenized test dataset of sst5
+load tokenized test dataset of yelp
+Performance:
+acc on amazon: 73.45003084515731
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/sst5/t5-small/vanilla/logits/0/amazon_logits.csv
+acc on dsc: 84.60671234064695
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/sst5/t5-small/vanilla/logits/0/dsc_logits.csv
+acc on dynasent: 55.601851851851855
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/sst5/t5-small/vanilla/logits/0/dynasent_logits.csv
+acc on imdb: 83.528
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/sst5/t5-small/vanilla/logits/0/imdb_logits.csv
+acc on semeval: 61.026560682435054
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/sst5/t5-small/vanilla/logits/0/semeval_logits.csv
+acc on sst5: 71.97750702905343
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/sst5/t5-small/vanilla/logits/0/sst5_logits.csv
+acc on yelp: 71.40666666666667
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/sst5/t5-small/vanilla/logits/0/yelp_logits.csv
+finish evaluation
+set seed: 0
+set seed: 0
+yelp
+30000
+Train from scratch
+Epoch 0, average loss: 1.5747073888778687
+Epoch 0, average loss: 1.1275109683766085
+Epoch 0, average loss: 1.018369083062257
+Epoch 0, average loss: 0.9721020479865422
+Epoch 0, average loss: 0.9256247780957625
+Epoch 0, average loss: 0.8884042520447081
+Epoch 0, average loss: 0.8576675462861394
+Epoch 0, average loss: 0.8371761717602738
+Epoch 0, average loss: 0.8152414709329605
+Epoch 0, average loss: 0.7965962115650431
+Epoch 0, average loss: 0.7770372421263221
+Epoch 0, average loss: 0.7605382278561592
+Epoch 0, average loss: 0.7466538846616737
+Epoch 0, average loss: 0.7331086733763302
+Epoch 0, average loss: 0.7212835934953751
+Epoch 0, average loss: 0.7125445112943173
+Epoch 0, average loss: 0.7025906329093206
+Epoch 0, average loss: 0.693531220662818
+Epoch 0, average loss: 0.68461717810734
+Epoch 1, average loss: 0.5954994857311249
+Epoch 1, average loss: 0.5338763568331214
+Epoch 1, average loss: 0.5408951182766716
+Epoch 1, average loss: 0.527161682826399
+Epoch 1, average loss: 0.5251331965795797
+Epoch 1, average loss: 0.5213790977321773
+Epoch 1, average loss: 0.5228447296913478
+Epoch 1, average loss: 0.5277297437466957
+Epoch 1, average loss: 0.525881389857379
+Epoch 1, average loss: 0.5240782340554864
+Epoch 1, average loss: 0.5206862492951566
+Epoch 1, average loss: 0.5191680654315464
+Epoch 1, average loss: 0.5158324097275436
+Epoch 1, average loss: 0.5127424247356879
+Epoch 1, average loss: 0.511504244032753
+Epoch 1, average loss: 0.5087982792402314
+Epoch 1, average loss: 0.5075020058761897
+Epoch 1, average loss: 0.5038439415649157
+Epoch 1, average loss: 0.5035755759917538
+Epoch 2, average loss: 0.4036749005317688
+Epoch 2, average loss: 0.4760737048060286
+Epoch 2, average loss: 0.48907867516621506
+Epoch 2, average loss: 0.47470675643212745
+Epoch 2, average loss: 0.4716544022867039
+Epoch 2, average loss: 0.47269359015789164
+Epoch 2, average loss: 0.47063926576429427
+Epoch 2, average loss: 0.4715758774885934
+Epoch 2, average loss: 0.4740109800679279
+Epoch 2, average loss: 0.47266877900206067
+Epoch 2, average loss: 0.4708779058205391
+Epoch 2, average loss: 0.4708000991337961
+Epoch 2, average loss: 0.4671400110492988
+Epoch 2, average loss: 0.4655883577001351
+Epoch 2, average loss: 0.464681317325623
+Epoch 2, average loss: 0.4637113706061192
+Epoch 2, average loss: 0.463027037935943
+Epoch 2, average loss: 0.46283661079900523
+Epoch 2, average loss: 0.46302711237201283
+Epoch 3, average loss: 0.2934143841266632
+Epoch 3, average loss: 0.4519215125371428
+Epoch 3, average loss: 0.4538719425402065
+Epoch 3, average loss: 0.4527299388108269
+Epoch 3, average loss: 0.4494079449098205
+Epoch 3, average loss: 0.44608704619614253
+Epoch 3, average loss: 0.4472898514415339
+Epoch 3, average loss: 0.44523684312178197
+Epoch 3, average loss: 0.441928955254858
+Epoch 3, average loss: 0.44348684470365424
+Epoch 3, average loss: 0.4448900371641218
+Epoch 3, average loss: 0.4451229944216686
+Epoch 3, average loss: 0.4433718808460206
+Epoch 3, average loss: 0.4431487512839143
+Epoch 3, average loss: 0.4400340708931868
+Epoch 3, average loss: 0.4395639276114626
+Epoch 3, average loss: 0.43845020245979266
+Epoch 3, average loss: 0.43789521701301237
+Epoch 3, average loss: 0.4361934341101615
+Epoch 4, average loss: 0.3133731931447983
+Epoch 4, average loss: 0.41768457762458744
+Epoch 4, average loss: 0.4180746343687619
+Epoch 4, average loss: 0.41626127648925937
+Epoch 4, average loss: 0.41564313159208394
+Epoch 4, average loss: 0.4152091904079534
+Epoch 4, average loss: 0.4155511137258967
+Epoch 4, average loss: 0.4172568789701856
+Epoch 4, average loss: 0.41656259561603204
+Epoch 4, average loss: 0.41491586367234157
+Epoch 4, average loss: 0.4205590561255366
+Epoch 4, average loss: 0.4189468310459664
+Epoch 4, average loss: 0.4191313360549646
+Epoch 4, average loss: 0.42321819464136745
+Epoch 4, average loss: 0.42199656849835976
+Epoch 4, average loss: 0.42174976171253525
+Epoch 4, average loss: 0.4193011856871598
+Epoch 4, average loss: 0.41859987728761733
+Epoch 4, average loss: 0.4191586225273937
+Epoch 5, average loss: 0.2696997597813606
+Epoch 5, average loss: 0.38899412568585545
+Epoch 5, average loss: 0.3889926698907177
+Epoch 5, average loss: 0.4055825344576741
+Epoch 5, average loss: 0.4066611631444438
+Epoch 5, average loss: 0.40186506138736033
+Epoch 5, average loss: 0.40483099100894704
+Epoch 5, average loss: 0.4056805401955575
+Epoch 5, average loss: 0.40533263808548303
+Epoch 5, average loss: 0.4047467446330513
+Epoch 5, average loss: 0.4041815120094788
+Epoch 5, average loss: 0.40068404908594546
+Epoch 5, average loss: 0.3983463261295079
+Epoch 5, average loss: 0.3979181516772499
+Epoch 5, average loss: 0.3963543641063439
+Epoch 5, average loss: 0.3960155300627377
+Epoch 5, average loss: 0.39595498272988683
+Epoch 5, average loss: 0.39468957577885666
+Epoch 5, average loss: 0.39554664245770454
+Epoch 6, average loss: 0.3975887596607208
+Epoch 6, average loss: 0.3876558729246551
+Epoch 6, average loss: 0.3949444286230177
+Epoch 6, average loss: 0.3951372858506954
+Epoch 6, average loss: 0.39256601986377987
+Epoch 6, average loss: 0.3964884118343967
+Epoch 6, average loss: 0.3944209811843907
+Epoch 6, average loss: 0.3970765007442219
+Epoch 6, average loss: 0.396208218421945
+Epoch 6, average loss: 0.39541259505465925
+Epoch 6, average loss: 0.3923238066365262
+Epoch 6, average loss: 0.3905155468198003
+Epoch 6, average loss: 0.3887378855200853
+Epoch 6, average loss: 0.38805376147756926
+Epoch 6, average loss: 0.3878008704605949
+Epoch 6, average loss: 0.38857223907517846
+Epoch 6, average loss: 0.3876226580423883
+Epoch 6, average loss: 0.3873945152174712
+Epoch 6, average loss: 0.38710099871122544
+Epoch 7, average loss: 0.21596740931272507
+Epoch 7, average loss: 0.39781782827248763
+Epoch 7, average loss: 0.38829174914424963
+Epoch 7, average loss: 0.3841914579963053
+Epoch 7, average loss: 0.3872172679955983
+Epoch 7, average loss: 0.3857204806193175
+Epoch 7, average loss: 0.3796731142011592
+Epoch 7, average loss: 0.38109799662334287
+Epoch 7, average loss: 0.3810439920633511
+Epoch 7, average loss: 0.38223805934388994
+Epoch 7, average loss: 0.3779792972726974
+Epoch 7, average loss: 0.3778112743577215
+Epoch 7, average loss: 0.3760768429789934
+Epoch 7, average loss: 0.37768673352874277
+Epoch 7, average loss: 0.37839194673369936
+Epoch 7, average loss: 0.38020158297420736
+Epoch 7, average loss: 0.376202239400327
+Epoch 7, average loss: 0.37546563880861716
+Epoch 7, average loss: 0.37466846465584835
+Epoch 8, average loss: 0.4522164985537529
+Epoch 8, average loss: 0.3778487711998762
+Epoch 8, average loss: 0.3783950619030707
+Epoch 8, average loss: 0.36433518300486717
+Epoch 8, average loss: 0.3547165838176783
+Epoch 8, average loss: 0.3575567442003593
+Epoch 8, average loss: 0.36189423437753193
+Epoch 8, average loss: 0.36070954753483975
+Epoch 8, average loss: 0.3609269169064011
+Epoch 8, average loss: 0.36136669466094407
+Epoch 8, average loss: 0.3611762861120784
+Epoch 8, average loss: 0.36371061696371776
+Epoch 8, average loss: 0.3649472606999059
+Epoch 8, average loss: 0.36547203648967036
+Epoch 8, average loss: 0.36489973845924867
+Epoch 8, average loss: 0.3636222380187397
+Epoch 8, average loss: 0.3642403194552913
+Epoch 8, average loss: 0.36355424786837975
+Epoch 8, average loss: 0.3630870614391023
+Epoch 9, average loss: 0.2566346898674965
+Epoch 9, average loss: 0.3598860864545785
+Epoch 9, average loss: 0.3480999708028123
+Epoch 9, average loss: 0.35357044764257817
+Epoch 9, average loss: 0.3533122643587453
+Epoch 9, average loss: 0.3565316849362209
+Epoch 9, average loss: 0.36010624850137885
+Epoch 9, average loss: 0.3618115469590466
+Epoch 9, average loss: 0.35989328045537344
+Epoch 9, average loss: 0.3591486454637775
+Epoch 9, average loss: 0.3597853871846865
+Epoch 9, average loss: 0.35855750377186846
+Epoch 9, average loss: 0.3604184608044918
+Epoch 9, average loss: 0.3582254281573673
+Epoch 9, average loss: 0.35596057649080065
+Epoch 9, average loss: 0.3537454138945208
+Epoch 9, average loss: 0.3524679396227095
+Epoch 9, average loss: 0.3531144592105537
+Epoch 9, average loss: 0.35313926329970624
+save model
+finish training
+evaluation
+load tokenized test dataset of amazon
+load tokenized test dataset of dsc
+load tokenized test dataset of dynasent
+load tokenized test dataset of imdb
+load tokenized test dataset of semeval
+load tokenized test dataset of sst5
+load tokenized test dataset of yelp
+Performance:
+acc on amazon: 75.73000205634382
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/yelp/t5-small/vanilla/logits/0/amazon_logits.csv
+acc on dsc: 89.02957245685543
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/yelp/t5-small/vanilla/logits/0/dsc_logits.csv
+acc on dynasent: 45.6712962962963
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/yelp/t5-small/vanilla/logits/0/dynasent_logits.csv
+acc on imdb: 85.76
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/yelp/t5-small/vanilla/logits/0/imdb_logits.csv
+acc on semeval: 45.52151996898022
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/yelp/t5-small/vanilla/logits/0/semeval_logits.csv
+acc on sst5: 65.5107778819119
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/yelp/t5-small/vanilla/logits/0/sst5_logits.csv
+acc on yelp: 86.68666666666667
+saved scores/logits csv: ./results/evaluations/method/SentimentAnalysis/yelp/t5-small/vanilla/logits/0/yelp_logits.csv
+finish evaluation
+Toxic Detection
+set seed: 0
+set seed: 0
+abuse_analyzer
+6080
+Load plm from cache
+evaluation
+load tokenized test dataset of adv_civil
+load tokenized test dataset of civil_comments
+load tokenized test dataset of implicit_hate
+load tokenized test dataset of toxigen
+Performance:
+acc on adv_civil: 77.34210526315789
+saved scores/logits csv: ./results/evaluations/method/ToxicDetection/abuse_analyzer/t5-small/vanilla/logits/0/adv_civil_logits.csv
+acc on civil_comments: 36.035758323057955
+saved scores/logits csv: ./results/evaluations/method/ToxicDetection/abuse_analyzer/t5-small/vanilla/logits/0/civil_comments_logits.csv
+acc on implicit_hate: 49.62756052141527
+saved scores/logits csv: ./results/evaluations/method/ToxicDetection/abuse_analyzer/t5-small/vanilla/logits/0/implicit_hate_logits.csv
+acc on toxigen: 60.95744680851064
+saved scores/logits csv: ./results/evaluations/method/ToxicDetection/abuse_analyzer/t5-small/vanilla/logits/0/toxigen_logits.csv
+finish evaluation
+set seed: 0
+set seed: 0
+civil_comments
+60000
+Load plm from cache
+evaluation
+load tokenized test dataset of adv_civil
+load tokenized test dataset of civil_comments
+load tokenized test dataset of implicit_hate
+load tokenized test dataset of toxigen
+Performance:
+acc on adv_civil: 73.42105263157895
+saved scores/logits csv: ./results/evaluations/method/ToxicDetection/civil_comments/t5-small/vanilla/logits/0/adv_civil_logits.csv
+acc on civil_comments: 81.47040690505548
+saved scores/logits csv: ./results/evaluations/method/ToxicDetection/civil_comments/t5-small/vanilla/logits/0/civil_comments_logits.csv
+acc on implicit_hate: 56.890130353817504
+saved scores/logits csv: ./results/evaluations/method/ToxicDetection/civil_comments/t5-small/vanilla/logits/0/implicit_hate_logits.csv
+acc on toxigen: 62.659574468085104
+saved scores/logits csv: ./results/evaluations/method/ToxicDetection/civil_comments/t5-small/vanilla/logits/0/toxigen_logits.csv
+finish evaluation
+set seed: 0
+set seed: 0
+implicit_hate
+17184
+Load plm from cache
+evaluation
+load tokenized test dataset of adv_civil
+load tokenized test dataset of civil_comments
+load tokenized test dataset of implicit_hate
+load tokenized test dataset of toxigen
+Performance:
+acc on adv_civil: 59.4078947368421
+saved scores/logits csv: ./results/evaluations/method/ToxicDetection/implicit_hate/t5-small/vanilla/logits/0/adv_civil_logits.csv
+acc on civil_comments: 11.734484175914508
+saved scores/logits csv: ./results/evaluations/method/ToxicDetection/implicit_hate/t5-small/vanilla/logits/0/civil_comments_logits.csv
+acc on implicit_hate: 76.8854748603352
+saved scores/logits csv: ./results/evaluations/method/ToxicDetection/implicit_hate/t5-small/vanilla/logits/0/implicit_hate_logits.csv
+acc on toxigen: 53.723404255319146
+saved scores/logits csv: ./results/evaluations/method/ToxicDetection/implicit_hate/t5-small/vanilla/logits/0/toxigen_logits.csv
+finish evaluation
+set seed: 0
+set seed: 0
+toxigen
+8960
+Load plm from cache
+evaluation
+load tokenized test dataset of adv_civil
+load tokenized test dataset of civil_comments
+load tokenized test dataset of implicit_hate
+load tokenized test dataset of toxigen
+Performance:
+acc on adv_civil: 66.32894736842105
+saved scores/logits csv: ./results/evaluations/method/ToxicDetection/toxigen/t5-small/vanilla/logits/0/adv_civil_logits.csv
+acc on civil_comments: 71.34812988080559
+saved scores/logits csv: ./results/evaluations/method/ToxicDetection/toxigen/t5-small/vanilla/logits/0/civil_comments_logits.csv
+acc on implicit_hate: 61.778398510242084
+saved scores/logits csv: ./results/evaluations/method/ToxicDetection/toxigen/t5-small/vanilla/logits/0/implicit_hate_logits.csv
+acc on toxigen: 72.65957446808511
+saved scores/logits csv: ./results/evaluations/method/ToxicDetection/toxigen/t5-small/vanilla/logits/0/toxigen_logits.csv
+finish evaluation
+Natural Language Inference
+set seed: 0
+set seed: 0
+anli
+162865
+Load plm from cache
+evaluation
+load tokenized test dataset of anli
+load tokenized test dataset of contract_nli
+load tokenized test dataset of mnli
+load tokenized test dataset of wanli
+Performance:
+acc on anli: 42.375
+saved scores/logits csv: ./results/evaluations/method/NaturalLanguageInference/anli/t5-small/vanilla/logits/0/anli_logits.csv
+acc on contract_nli: 44.04591104734577
+saved scores/logits csv: ./results/evaluations/method/NaturalLanguageInference/anli/t5-small/vanilla/logits/0/contract_nli_logits.csv
+acc on mnli: 71.27865511971473
+saved scores/logits csv: ./results/evaluations/method/NaturalLanguageInference/anli/t5-small/vanilla/logits/0/mnli_logits.csv
+acc on wanli: 49.68
+saved scores/logits csv: ./results/evaluations/method/NaturalLanguageInference/anli/t5-small/vanilla/logits/0/wanli_logits.csv
+finish evaluation
+set seed: 0
+set seed: 0
+contract_nli
+14010
+Load plm from cache
+evaluation
+load tokenized test dataset of anli
+load tokenized test dataset of contract_nli
+load tokenized test dataset of mnli
+load tokenized test dataset of wanli
+Performance:
+acc on anli: 31.34375
+saved scores/logits csv: ./results/evaluations/method/NaturalLanguageInference/contract_nli/t5-small/vanilla/logits/0/anli_logits.csv
+acc on contract_nli: 27.546628407460545
+saved scores/logits csv: ./results/evaluations/method/NaturalLanguageInference/contract_nli/t5-small/vanilla/logits/0/contract_nli_logits.csv
+acc on mnli: 33.29597554763118
+saved scores/logits csv: ./results/evaluations/method/NaturalLanguageInference/contract_nli/t5-small/vanilla/logits/0/mnli_logits.csv
+acc on wanli: 47.48
+saved scores/logits csv: ./results/evaluations/method/NaturalLanguageInference/contract_nli/t5-small/vanilla/logits/0/wanli_logits.csv
+finish evaluation
+set seed: 0
+set seed: 0
+wanli
+102884
+Load plm from cache
+evaluation
+load tokenized test dataset of anli
+load tokenized test dataset of contract_nli
+load tokenized test dataset of mnli
+load tokenized test dataset of wanli
+Performance:
+acc on anli: 32.0
+saved scores/logits csv: ./results/evaluations/method/NaturalLanguageInference/wanli/t5-small/vanilla/logits/0/anli_logits.csv
+acc on contract_nli: 47.63271162123386
+saved scores/logits csv: ./results/evaluations/method/NaturalLanguageInference/wanli/t5-small/vanilla/logits/0/contract_nli_logits.csv
+acc on mnli: 58.79775853285787
+saved scores/logits csv: ./results/evaluations/method/NaturalLanguageInference/wanli/t5-small/vanilla/logits/0/mnli_logits.csv
+acc on wanli: 68.04
+saved scores/logits csv: ./results/evaluations/method/NaturalLanguageInference/wanli/t5-small/vanilla/logits/0/wanli_logits.csv
+finish evaluation
+Named Entity Recognition
+set seed: 0
+conll
+14041
+Load plm from cache
+evaluation
+load tokenized test dataset of conll
+load tokenized test dataset of ener
+load tokenized test dataset of fewnerd
+load tokenized test dataset of wnut
+Performance:
+saved ner token scores csv: ./results/evaluations/method/NameEntityRecognition/conll/deberta-small/vanilla/logits/0/conll_token_logits.csv
+f1 on conll: 0.9056750453485358
+saved ner token scores csv: ./results/evaluations/method/NameEntityRecognition/conll/deberta-small/vanilla/logits/0/ener_token_logits.csv
+f1 on ener: 0.5462331482950039
+saved ner token scores csv: ./results/evaluations/method/NameEntityRecognition/conll/deberta-small/vanilla/logits/0/fewnerd_token_logits.csv
+f1 on fewnerd: 0.5425756558706718
+saved ner token scores csv: ./results/evaluations/method/NameEntityRecognition/conll/deberta-small/vanilla/logits/0/wnut_token_logits.csv
+f1 on wnut: 0.3637371777100083
+finish evaluation
+set seed: 0
+ener
+9353
+Load plm from cache
+evaluation
+load tokenized test dataset of conll
+load tokenized test dataset of ener
+load tokenized test dataset of fewnerd
+load tokenized test dataset of wnut
+Performance:
+saved ner token scores csv: ./results/evaluations/method/NameEntityRecognition/ener/deberta-small/vanilla/logits/0/conll_token_logits.csv
+f1 on conll: 0.6551324841632041
+saved ner token scores csv: ./results/evaluations/method/NameEntityRecognition/ener/deberta-small/vanilla/logits/0/ener_token_logits.csv
+f1 on ener: 0.9214555577649631
+saved ner token scores csv: ./results/evaluations/method/NameEntityRecognition/ener/deberta-small/vanilla/logits/0/fewnerd_token_logits.csv
+f1 on fewnerd: 0.4771691931575095
+saved ner token scores csv: ./results/evaluations/method/NameEntityRecognition/ener/deberta-small/vanilla/logits/0/wnut_token_logits.csv
+f1 on wnut: 0.35013812154696133
+finish evaluation
+set seed: 0
+wnut
+3394
+Load plm from cache
+evaluation
+load tokenized test dataset of conll
+load tokenized test dataset of ener
+load tokenized test dataset of fewnerd
+load tokenized test dataset of wnut
+Performance:
+saved ner token scores csv: ./results/evaluations/method/NameEntityRecognition/wnut/deberta-small/vanilla/logits/0/conll_token_logits.csv
+f1 on conll: 0.6585838295430088
+saved ner token scores csv: ./results/evaluations/method/NameEntityRecognition/wnut/deberta-small/vanilla/logits/0/ener_token_logits.csv
+f1 on ener: 0.4430632630410655
+saved ner token scores csv: ./results/evaluations/method/NameEntityRecognition/wnut/deberta-small/vanilla/logits/0/fewnerd_token_logits.csv
+f1 on fewnerd: 0.5344515691995043
+saved ner token scores csv: ./results/evaluations/method/NameEntityRecognition/wnut/deberta-small/vanilla/logits/0/wnut_token_logits.csv
+f1 on wnut: 0.44727694090382386
+finish evaluation
+Question Answering
+set seed: 0
+advqa
+3000
+Load plm from cache
+evaluation
+load tokenized test dataset of advqa
+load tokenized test dataset of searchqa
+load tokenized test dataset of squad
+Performance:
+saved qa scores csv: ./results/evaluations/method/QuestionAnswering/advqa/t5-small/vanilla/scores/0/advqa_qa_scores.csv
+96 predictions not in the context, 96/3000=0.032
+exact_match on advqa: 29.2
+f1 on advqa: 38.318576545471835
+saved qa scores csv: ./results/evaluations/method/QuestionAnswering/advqa/t5-small/vanilla/scores/0/searchqa_qa_scores.csv
+357 predictions not in the context, 357/14359=0.024862455602757853
+exact_match on searchqa: 15.398008217842468
+f1 on searchqa: 19.655154312741104
+saved qa scores csv: ./results/evaluations/method/QuestionAnswering/advqa/t5-small/vanilla/scores/0/squad_qa_scores.csv
+155 predictions not in the context, 155/10570=0.01466414380321665
+exact_match on squad: 69.97161778618732
+f1 on squad: 78.81967314903194
+finish evaluation
+set seed: 0
+newsqa
+74160
+Load plm from cache
+evaluation
+load tokenized test dataset of advqa
+load tokenized test dataset of searchqa
+load tokenized test dataset of squad
+Performance:
+saved qa scores csv: ./results/evaluations/method/QuestionAnswering/newsqa/t5-small/vanilla/scores/0/advqa_qa_scores.csv
+78 predictions not in the context, 78/3000=0.026
+exact_match on advqa: 16.533333333333335
+f1 on advqa: 26.672171650061735
+saved qa scores csv: ./results/evaluations/method/QuestionAnswering/newsqa/t5-small/vanilla/scores/0/searchqa_qa_scores.csv
+208 predictions not in the context, 208/14359=0.014485688418413538
+exact_match on searchqa: 26.770666480952713
+f1 on searchqa: 33.407998522950024
+saved qa scores csv: ./results/evaluations/method/QuestionAnswering/newsqa/t5-small/vanilla/scores/0/squad_qa_scores.csv
+81 predictions not in the context, 81/10570=0.007663197729422895
+exact_match on squad: 67.18070009460737
+f1 on squad: 79.95528741919964
+finish evaluation
+set seed: 0
+searchqa
+100648
+Load plm from cache
+evaluation
+load tokenized test dataset of advqa
+load tokenized test dataset of searchqa
+load tokenized test dataset of squad
+Performance:
+saved qa scores csv: ./results/evaluations/method/QuestionAnswering/searchqa/t5-small/vanilla/scores/0/advqa_qa_scores.csv
+164 predictions not in the context, 164/3000=0.05466666666666667
+exact_match on advqa: 15.033333333333333
+f1 on advqa: 20.720509304788532
+saved qa scores csv: ./results/evaluations/method/QuestionAnswering/searchqa/t5-small/vanilla/scores/0/searchqa_qa_scores.csv
+225 predictions not in the context, 225/14359=0.015669614875687722
+exact_match on searchqa: 75.37432968869699
+f1 on searchqa: 80.2554340676767
+saved qa scores csv: ./results/evaluations/method/QuestionAnswering/searchqa/t5-small/vanilla/scores/0/squad_qa_scores.csv
+470 predictions not in the context, 470/10570=0.04446546830652791
+exact_match on squad: 52.5922421948912
+f1 on squad: 62.70153417712758
+finish evaluation
+Experiment 3
+Epoch 1: loss=1.1171, val_acc=74.60, val_ece=0.0430
+Epoch 2: loss=0.7142, val_acc=77.86, val_ece=0.0509
+Epoch 3: loss=0.5333, val_acc=78.42, val_ece=0.0760
+Saved best model to ./wildtime_exp3/checkpoints/exp3_huffpost_best.pt
+Saved logits to ./wildtime_exp3/results/exp3_huffpost_val_logits.csv
+Saved logits to ./wildtime_exp3/results/exp3_huffpost_2016_logits.csv
+test_year=2016, gap=1, acc=69.71, ece=0.1420
+Saved logits to ./wildtime_exp3/results/exp3_huffpost_2017_logits.csv
+test_year=2017, gap=2, acc=69.25, ece=0.1516
+Saved logits to ./wildtime_exp3/results/exp3_huffpost_2018_logits.csv
+test_year=2018, gap=3, acc=68.30, ece=0.1429
+Saved results to ./wildtime_exp3/results/exp3_huffpost_results.csv
+Saved plots.
+TRAIN_YEARS = [2007, 2008, 2009, 2010]
+TEST_YEARS = [2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]
+Loading tokenizer from local cache...
+Building full training dataset...
+Loading train split for year 2007...
+Loading train split for year 2008...
+Loading train split for year 2009...
+Loading train split for year 2010...
+full_train len = 450919
+train_ds len = 405828
+val_ds len = 45091
+num_labels = 172
+Checking label range in sampled training data...
+Observed label range in sample: min=1, max=168
+classifier weight shape = torch.Size([172, 768])
+Epoch 1, step 500, avg_loss=3.7203
+Epoch 1, step 1000, avg_loss=3.3593
+Epoch 1, step 1500, avg_loss=3.1696
+Epoch 1, step 2000, avg_loss=3.0293
+Epoch 1, step 2500, avg_loss=2.9219
+Epoch 1, step 3000, avg_loss=2.8280
+Epoch 1, step 3500, avg_loss=2.7604
+Epoch 1, step 4000, avg_loss=2.7009
+Epoch 1, step 4500, avg_loss=2.6495
+Epoch 1, step 5000, avg_loss=2.6099
+Epoch 1, step 5500, avg_loss=2.5682
+Epoch 1, step 6000, avg_loss=2.5337
+Epoch 1, step 6500, avg_loss=2.4993
+Epoch 1, step 7000, avg_loss=2.4683
+Epoch 1, step 7500, avg_loss=2.4406
+Epoch 1, step 8000, avg_loss=2.4156
+Epoch 1, step 8500, avg_loss=2.3965
+Epoch 1, step 9000, avg_loss=2.3750
+Epoch 1, step 9500, avg_loss=2.3579
+Epoch 1, step 10000, avg_loss=2.3373
+Epoch 1, step 10500, avg_loss=2.3211
+Epoch 1, step 11000, avg_loss=2.3037
+Epoch 1, step 11500, avg_loss=2.2885
+Epoch 1, step 12000, avg_loss=2.2730
+Epoch 1, step 12500, avg_loss=2.2594
+Epoch 1, step 13000, avg_loss=2.2459
+Epoch 1, step 13500, avg_loss=2.2341
+Epoch 1, step 14000, avg_loss=2.2214
+Epoch 1, step 14500, avg_loss=2.2090
+Epoch 1, step 15000, avg_loss=2.1988
+Epoch 1, step 15500, avg_loss=2.1874
+Epoch 1, step 16000, avg_loss=2.1763
+Epoch 1, step 16500, avg_loss=2.1659
+Epoch 1, step 17000, avg_loss=2.1561
+Epoch 1, step 17500, avg_loss=2.1475
+Epoch 1, step 18000, avg_loss=2.1384
+Epoch 1, step 18500, avg_loss=2.1286
+Epoch 1, step 19000, avg_loss=2.1205
+Epoch 1, step 19500, avg_loss=2.1103
+Epoch 1, step 20000, avg_loss=2.1016
+Epoch 1, step 20500, avg_loss=2.0937
+Epoch 1, step 21000, avg_loss=2.0859
+Epoch 1, step 21500, avg_loss=2.0786
+Epoch 1, step 22000, avg_loss=2.0710
+Epoch 1, step 22500, avg_loss=2.0632
+Epoch 1, step 23000, avg_loss=2.0559
+Epoch 1, step 23500, avg_loss=2.0481
+Epoch 1, step 24000, avg_loss=2.0418
+Epoch 1, step 24500, avg_loss=2.0353
+Epoch 1, step 25000, avg_loss=2.0284
+Epoch 1, step 25500, avg_loss=2.0222
+Epoch 1, step 26000, avg_loss=2.0165
+Epoch 1, step 26500, avg_loss=2.0098
+Epoch 1, step 27000, avg_loss=2.0040
+Epoch 1, step 27500, avg_loss=1.9980
+Epoch 1, step 28000, avg_loss=1.9929
+Epoch 1, step 28500, avg_loss=1.9872
+Epoch 1, step 29000, avg_loss=1.9818
+Epoch 1, step 29500, avg_loss=1.9753
+Epoch 1, step 30000, avg_loss=1.9699
+Epoch 1, step 30500, avg_loss=1.9642
+Epoch 1, step 31000, avg_loss=1.9586
+Epoch 1, step 31500, avg_loss=1.9533
+Epoch 1, step 32000, avg_loss=1.9486
+Epoch 1, step 32500, avg_loss=1.9436
+Epoch 1, step 33000, avg_loss=1.9393
+Epoch 1, step 33500, avg_loss=1.9345
+Epoch 1, step 34000, avg_loss=1.9297
+Epoch 1, step 34500, avg_loss=1.9251
+Epoch 1, step 35000, avg_loss=1.9210
+Epoch 1, step 35500, avg_loss=1.9165
+Epoch 1, step 36000, avg_loss=1.9126
+Epoch 1, step 36500, avg_loss=1.9094
+Epoch 1, step 37000, avg_loss=1.9044
+Epoch 1, step 37500, avg_loss=1.9001
+Epoch 1, step 38000, avg_loss=1.8959
+Epoch 1, step 38500, avg_loss=1.8918
+Epoch 1, step 39000, avg_loss=1.8882
+Epoch 1, step 39500, avg_loss=1.8838
+Epoch 1, step 40000, avg_loss=1.8801
+Epoch 1, step 40500, avg_loss=1.8763
+Epoch 1, step 41000, avg_loss=1.8720
+Epoch 1, step 41500, avg_loss=1.8686
+Epoch 1, step 42000, avg_loss=1.8645
+Epoch 1, step 42500, avg_loss=1.8607
+Epoch 1, step 43000, avg_loss=1.8577
+Epoch 1, step 43500, avg_loss=1.8545
+Epoch 1, step 44000, avg_loss=1.8513
+Epoch 1, step 44500, avg_loss=1.8482
+Epoch 1, step 45000, avg_loss=1.8449
+Epoch 1, step 45500, avg_loss=1.8411
+Epoch 1, step 46000, avg_loss=1.8379
+Epoch 1, step 46500, avg_loss=1.8348
+Epoch 1, step 47000, avg_loss=1.8320
+Epoch 1, step 47500, avg_loss=1.8288
+Epoch 1, step 48000, avg_loss=1.8256
+Epoch 1, step 48500, avg_loss=1.8222
+Epoch 1, step 49000, avg_loss=1.8194
+Epoch 1, step 49500, avg_loss=1.8161
+Epoch 1, step 50000, avg_loss=1.8128
+Epoch 1, step 50500, avg_loss=1.8105
+Epoch 1: loss=1.8090, val_acc=60.05, val_ece=0.0463
+Epoch 2, step 500, avg_loss=1.4246
+Epoch 2, step 1000, avg_loss=1.4100
+Epoch 2, step 1500, avg_loss=1.4071
+Epoch 2, step 2000, avg_loss=1.4136
+Epoch 2, step 2500, avg_loss=1.4174
+Epoch 2, step 3000, avg_loss=1.4180
+Epoch 2, step 3500, avg_loss=1.4284
+Epoch 2, step 4000, avg_loss=1.4292
+Epoch 2, step 4500, avg_loss=1.4275
+Epoch 2, step 5000, avg_loss=1.4274
+Epoch 2, step 5500, avg_loss=1.4276
+Epoch 2, step 6000, avg_loss=1.4219
+Epoch 2, step 6500, avg_loss=1.4190
+Epoch 2, step 7000, avg_loss=1.4182
+Epoch 2, step 7500, avg_loss=1.4183
+Epoch 2, step 8000, avg_loss=1.4168
+Epoch 2, step 8500, avg_loss=1.4168
+Epoch 2, step 9000, avg_loss=1.4188
+Epoch 2, step 9500, avg_loss=1.4154
+Epoch 2, step 10000, avg_loss=1.4168
+Epoch 2, step 10500, avg_loss=1.4160
+Epoch 2, step 11000, avg_loss=1.4172
+Epoch 2, step 11500, avg_loss=1.4177
+Epoch 2, step 12000, avg_loss=1.4179
+Epoch 2, step 12500, avg_loss=1.4185
+Epoch 2, step 13000, avg_loss=1.4183
+Epoch 2, step 13500, avg_loss=1.4188
+Epoch 2, step 14000, avg_loss=1.4188
+Epoch 2, step 14500, avg_loss=1.4192
+Epoch 2, step 15000, avg_loss=1.4195
+Epoch 2, step 15500, avg_loss=1.4174
+Epoch 2, step 16000, avg_loss=1.4180
+Epoch 2, step 16500, avg_loss=1.4160
+Epoch 2, step 17000, avg_loss=1.4165
+Epoch 2, step 17500, avg_loss=1.4161
+Epoch 2, step 18000, avg_loss=1.4155
+Epoch 2, step 18500, avg_loss=1.4138
+Epoch 2, step 19000, avg_loss=1.4140
+Epoch 2, step 19500, avg_loss=1.4133
+Epoch 2, step 20000, avg_loss=1.4130
+Epoch 2, step 20500, avg_loss=1.4126
+Epoch 2, step 21000, avg_loss=1.4124
+Epoch 2, step 21500, avg_loss=1.4112
+Epoch 2, step 22000, avg_loss=1.4109
+Epoch 2, step 22500, avg_loss=1.4095
+Epoch 2, step 23000, avg_loss=1.4084
+Epoch 2, step 23500, avg_loss=1.4086
+Epoch 2, step 24000, avg_loss=1.4074
+Epoch 2, step 24500, avg_loss=1.4065
+Epoch 2, step 25000, avg_loss=1.4060
+Epoch 2, step 25500, avg_loss=1.4054
+Epoch 2, step 26000, avg_loss=1.4058
+Epoch 2, step 26500, avg_loss=1.4055
+Epoch 2, step 27000, avg_loss=1.4046
+Epoch 2, step 27500, avg_loss=1.4047
+Epoch 2, step 28000, avg_loss=1.4048
+Epoch 2, step 28500, avg_loss=1.4037
+Epoch 2, step 29000, avg_loss=1.4034
+Epoch 2, step 29500, avg_loss=1.4031
+Epoch 2, step 30000, avg_loss=1.4027
+Epoch 2, step 30500, avg_loss=1.4010
+Epoch 2, step 31000, avg_loss=1.4015
+Epoch 2, step 31500, avg_loss=1.4011
+Epoch 2, step 32000, avg_loss=1.4004
+Epoch 2, step 32500, avg_loss=1.3991
+Epoch 2, step 33000, avg_loss=1.3989
+Epoch 2, step 33500, avg_loss=1.3983
+Epoch 2, step 34000, avg_loss=1.3986
+Epoch 2, step 34500, avg_loss=1.3979
+Epoch 2, step 35000, avg_loss=1.3978
+Epoch 2, step 35500, avg_loss=1.3979
+Epoch 2, step 36000, avg_loss=1.3971
+Epoch 2, step 36500, avg_loss=1.3962
+Epoch 2, step 37000, avg_loss=1.3957
+Epoch 2, step 37500, avg_loss=1.3951
+Epoch 2, step 38000, avg_loss=1.3948
+Epoch 2, step 38500, avg_loss=1.3942
+Epoch 2, step 39000, avg_loss=1.3938
+Epoch 2, step 39500, avg_loss=1.3932
+Epoch 2, step 40000, avg_loss=1.3927
+Epoch 2, step 40500, avg_loss=1.3923
+Epoch 2, step 41000, avg_loss=1.3922
+Epoch 2, step 41500, avg_loss=1.3913
+Epoch 2, step 42000, avg_loss=1.3910
+Epoch 2, step 42500, avg_loss=1.3907
+Epoch 2, step 43000, avg_loss=1.3904
+Epoch 2, step 43500, avg_loss=1.3897
+Epoch 2, step 44000, avg_loss=1.3892
+Epoch 2, step 44500, avg_loss=1.3887
+Epoch 2, step 45000, avg_loss=1.3881
+Epoch 2, step 45500, avg_loss=1.3878
+Epoch 2, step 46000, avg_loss=1.3872
+Epoch 2, step 46500, avg_loss=1.3865
+Epoch 2, step 47000, avg_loss=1.3860
+Epoch 2, step 47500, avg_loss=1.3850
+Epoch 2, step 48000, avg_loss=1.3842
+Epoch 2, step 48500, avg_loss=1.3836
+Epoch 2, step 49000, avg_loss=1.3833
+Epoch 2, step 49500, avg_loss=1.3828
+Epoch 2, step 50000, avg_loss=1.3828
+Epoch 2, step 50500, avg_loss=1.3822
+Epoch 2: loss=1.3818, val_acc=62.70, val_ece=0.0723
+Saved best model to ./wildtime_exp3/checkpoints/exp3_arxiv_best.pt
+Saved logits to ./wildtime_exp3/results/exp3_arxiv_val_logits.csv
+Evaluating test year 2011...
+Saved logits to ./wildtime_exp3/results/exp3_arxiv_2011_logits.csv
+test_year=2011, gap=1, acc=52.61, ece=0.1319
+Evaluating test year 2012...
+Saved logits to ./wildtime_exp3/results/exp3_arxiv_2012_logits.csv
+test_year=2012, gap=2, acc=45.46, ece=0.1521
+Evaluating test year 2013...
+Saved logits to ./wildtime_exp3/results/exp3_arxiv_2013_logits.csv
+test_year=2013, gap=3, acc=45.69, ece=0.1491
+Evaluating test year 2014...
+Saved logits to ./wildtime_exp3/results/exp3_arxiv_2014_logits.csv
+test_year=2014, gap=4, acc=46.68, ece=0.1572
+Evaluating test year 2015...
+Saved logits to ./wildtime_exp3/results/exp3_arxiv_2015_logits.csv
+test_year=2015, gap=5, acc=39.24, ece=0.2917
+Evaluating test year 2016...
+Saved logits to ./wildtime_exp3/results/exp3_arxiv_2016_logits.csv
+test_year=2016, gap=6, acc=43.52, ece=0.1849
+Evaluating test year 2017...
+Saved logits to ./wildtime_exp3/results/exp3_arxiv_2017_logits.csv
+test_year=2017, gap=7, acc=40.82, ece=0.1904
+Evaluating test year 2018...
+Saved logits to ./wildtime_exp3/results/exp3_arxiv_2018_logits.csv
+test_year=2018, gap=8, acc=37.49, ece=0.1982
+Evaluating test year 2019...
+Saved logits to ./wildtime_exp3/results/exp3_arxiv_2019_logits.csv
+test_year=2019, gap=9, acc=36.58, ece=0.2004
+Evaluating test year 2020...
+Saved logits to ./wildtime_exp3/results/exp3_arxiv_2020_logits.csv
+test_year=2020, gap=10, acc=34.54, ece=0.1957
+Evaluating test year 2021...
+Saved logits to ./wildtime_exp3/results/exp3_arxiv_2021_logits.csv
+test_year=2021, gap=11, acc=35.75, ece=0.1789
+Evaluating test year 2022...
+Saved logits to ./wildtime_exp3/results/exp3_arxiv_2022_logits.csv
+test_year=2022, gap=12, acc=36.82, ece=0.1715
+Saved results to ./wildtime_exp3/results/exp3_arxiv_results.csv
+Saved plots.
+===== Done =====

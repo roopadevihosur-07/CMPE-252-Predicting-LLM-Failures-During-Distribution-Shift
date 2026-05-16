@@ -1,0 +1,28 @@
+{
+  "data_root": "./datasets/process/SentimentAnalysis",
+  "train_dataset": "amazon",
+  "eval_datasets": [
+    "amazon",
+    "dynasent",
+    "imdb",
+    "semeval",
+    "sst5",
+    "yelp"
+  ],
+  "output_dir": "./experiment4_cnn_outputs",
+  "max_vocab_size": 50000,
+  "max_len": 256,
+  "embed_dim": 200,
+  "num_filters": 100,
+  "kernel_sizes": [
+    3,
+    4,
+    5
+  ],
+  "dropout": 0.5,
+  "batch_size": 64,
+  "epochs": 10,
+  "lr": 0.001,
+  "seed": 42,
+  "num_workers": 2
+}

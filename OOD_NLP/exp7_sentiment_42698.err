@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/fs/atipa/home/017309357/252Proj/OOD_NLP/exp7_run_sentiment.py", line 201, in <module>
+    main()
+  File "/fs/atipa/home/017309357/252Proj/OOD_NLP/exp7_run_sentiment.py", line 189, in main
+    run_sentiment_experiment(
+  File "/fs/atipa/home/017309357/252Proj/OOD_NLP/exp7_run_sentiment.py", line 87, in run_sentiment_experiment
+    llm = LocalHFLLM(model_name_or_path=model_name_or_path)
+  File "/fs/atipa/home/017309357/252Proj/OOD_NLP/exp7_run_sentiment.py", line 33, in __init__
+    self.tokenizer = AutoTokenizer.from_pretrained(
+  File "/home/017309357/252Proj/OOD_NLP/ood_env/lib64/python3.9/site-packages/transformers/models/auto/tokenization_auto.py", line 699, in from_pretrained
+    raise ValueError(
+ValueError: Tokenizer class Qwen2Tokenizer does not exist or is not currently imported.

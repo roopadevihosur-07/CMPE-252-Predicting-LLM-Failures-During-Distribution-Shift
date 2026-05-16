@@ -1,0 +1,4 @@
+  File "/fs/atipa/home/017309357/252Proj/OOD_NLP/exp7_run_sentiment.py", line 33
+    self.tokenizer = AutoTokenizer.from_pretrained(
+        ^
+SyntaxError: keyword argument repeated: trust_remote_code

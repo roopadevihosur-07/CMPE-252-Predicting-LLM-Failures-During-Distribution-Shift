@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/fs/atipa/home/017309357/252Proj/OOD_NLP/exp7_run_sentiment.py", line 181, in <module>
+    main()
+  File "/fs/atipa/home/017309357/252Proj/OOD_NLP/exp7_run_sentiment.py", line 169, in main
+    run_sentiment_experiment(
+  File "/fs/atipa/home/017309357/252Proj/OOD_NLP/exp7_run_sentiment.py", line 80, in run_sentiment_experiment
+    llm = LocalHFLLM(model_name_or_path=model_name_or_path)
+  File "/fs/atipa/home/017309357/252Proj/OOD_NLP/exp7_run_sentiment.py", line 33, in __init__
+    self.tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, local_files_only=False)
+  File "/home/017309357/252Proj/OOD_NLP/ood_env/lib64/python3.9/site-packages/transformers/models/auto/tokenization_auto.py", line 642, in from_pretrained
+    tokenizer_config = get_tokenizer_config(pretrained_model_name_or_path, **kwargs)
+  File "/home/017309357/252Proj/OOD_NLP/ood_env/lib64/python3.9/site-packages/transformers/models/auto/tokenization_auto.py", line 486, in get_tokenizer_config
+    resolved_config_file = cached_file(
+  File "/home/017309357/252Proj/OOD_NLP/ood_env/lib64/python3.9/site-packages/transformers/utils/hub.py", line 409, in cached_file
+    resolved_file = hf_hub_download(
+  File "/home/017309357/252Proj/OOD_NLP/ood_env/lib64/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 106, in _inner_fn
+    validate_repo_id(arg_value)
+  File "/home/017309357/252Proj/OOD_NLP/ood_env/lib64/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 154, in validate_repo_id
+    raise HFValidationError(
+huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/path/to/your/local_llm'. Use `repo_type` argument if needed.

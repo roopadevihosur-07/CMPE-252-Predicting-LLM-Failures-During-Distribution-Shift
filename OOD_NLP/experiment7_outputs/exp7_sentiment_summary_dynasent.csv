@@ -1,0 +1,6 @@
+model_name,task,source_dataset,target_dataset,shift_type,num_examples,accuracy,mean_confidence,ece
+./model_cache/Qwen2.5-1.5B-Instruct,sentiment,dynasent,dynasent,in_domain,100,0.5,95.10204081632654,0.44387755102040805
+./model_cache/Qwen2.5-1.5B-Instruct,sentiment,dynasent,imdb,domain_shift,100,0.61,93.51807228915662,0.21228915662650616
+./model_cache/Qwen2.5-1.5B-Instruct,sentiment,dynasent,semeval,domain_shift,100,0.31,94.06,0.6559999999999999
+./model_cache/Qwen2.5-1.5B-Instruct,sentiment,dynasent,sst5,domain_shift,100,0.46,94.42268041237114,0.4990721649484535
+./model_cache/Qwen2.5-1.5B-Instruct,sentiment,dynasent,yelp,domain_shift,100,0.56,95.84210526315789,0.37105263157894747

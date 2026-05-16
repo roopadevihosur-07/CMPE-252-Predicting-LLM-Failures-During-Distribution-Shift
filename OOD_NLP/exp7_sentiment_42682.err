@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/fs/atipa/home/017309357/252Proj/OOD_NLP/exp7_run_sentiment.py", line 181, in <module>
+    main()
+  File "/fs/atipa/home/017309357/252Proj/OOD_NLP/exp7_run_sentiment.py", line 169, in main
+    run_sentiment_experiment(
+  File "/fs/atipa/home/017309357/252Proj/OOD_NLP/exp7_run_sentiment.py", line 80, in run_sentiment_experiment
+    llm = LocalHFLLM(model_name_or_path=model_name_or_path)
+  File "/fs/atipa/home/017309357/252Proj/OOD_NLP/exp7_run_sentiment.py", line 33, in __init__
+    self.tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, local_files_only=True)
+  File "/home/017309357/252Proj/OOD_NLP/ood_env/lib64/python3.9/site-packages/transformers/models/auto/tokenization_auto.py", line 702, in from_pretrained
+    return tokenizer_class.from_pretrained(pretrained_model_name_or_path, *inputs, **kwargs)
+  File "/home/017309357/252Proj/OOD_NLP/ood_env/lib64/python3.9/site-packages/transformers/tokenization_utils_base.py", line 1811, in from_pretrained
+    return cls._from_pretrained(
+  File "/home/017309357/252Proj/OOD_NLP/ood_env/lib64/python3.9/site-packages/transformers/tokenization_utils_base.py", line 1965, in _from_pretrained
+    tokenizer = cls(*init_inputs, **init_kwargs)
+  File "/home/017309357/252Proj/OOD_NLP/ood_env/lib64/python3.9/site-packages/transformers/models/t5/tokenization_t5_fast.py", line 133, in __init__
+    super().__init__(
+  File "/home/017309357/252Proj/OOD_NLP/ood_env/lib64/python3.9/site-packages/transformers/tokenization_utils_fast.py", line 111, in __init__
+    fast_tokenizer = TokenizerFast.from_file(fast_tokenizer_file)
+Exception: data did not match any variant of untagged enum PyPreTokenizerTypeWrapper at line 948 column 3

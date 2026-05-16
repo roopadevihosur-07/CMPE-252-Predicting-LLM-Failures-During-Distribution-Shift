@@ -1,0 +1,16 @@
+{
+  "train_dataset": "amazon",
+  "eval_datasets": [
+    "amazon",
+    "dynasent",
+    "imdb",
+    "semeval",
+    "sst5",
+    "yelp"
+  ],
+  "device": "cuda",
+  "best_train_loss": 0.1899438197297582,
+  "metrics_csv": "./experiment4_cnn_outputs/experiment4_metrics.csv",
+  "predictions_csv": "./experiment4_cnn_outputs/experiment4_predictions.csv",
+  "model_path": "./experiment4_cnn_outputs/best_textcnn.pt"
+}

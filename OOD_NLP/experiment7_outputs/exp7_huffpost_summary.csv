@@ -1,0 +1,4 @@
+model_name,task,train_years,test_year,time_gap,num_examples,accuracy,mean_confidence,ece,confidence_coverage
+./model_cache/Qwen2.5-1.5B-Instruct,huffpost,"[2012, 2013, 2014, 2015]",2016,1,100,0.03,88.82051282051282,0.8497435897435897,0.78
+./model_cache/Qwen2.5-1.5B-Instruct,huffpost,"[2012, 2013, 2014, 2015]",2017,2,100,0.06,80.28947368421052,0.7239473684210528,0.76
+./model_cache/Qwen2.5-1.5B-Instruct,huffpost,"[2012, 2013, 2014, 2015]",2018,3,100,0.08,85.11111111111111,0.74,0.72

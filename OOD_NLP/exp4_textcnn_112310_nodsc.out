@@ -1,0 +1,37 @@
+Job started on condo1
+CUDA_VISIBLE_DEVICES=1
+Using device: cuda
+Loaded train dataset: amazon
+Train samples: 30000
+Label mapping: {'0': 0, '1': 1, '2': 2}
+Vocab size: 50000
+Epoch 1/10 - train_loss: 0.929058
+Saved best model to ./experiment4_cnn_outputs/best_textcnn.pt
+Epoch 2/10 - train_loss: 0.749647
+Saved best model to ./experiment4_cnn_outputs/best_textcnn.pt
+Epoch 3/10 - train_loss: 0.655346
+Saved best model to ./experiment4_cnn_outputs/best_textcnn.pt
+Epoch 4/10 - train_loss: 0.568011
+Saved best model to ./experiment4_cnn_outputs/best_textcnn.pt
+Epoch 5/10 - train_loss: 0.475585
+Saved best model to ./experiment4_cnn_outputs/best_textcnn.pt
+Epoch 6/10 - train_loss: 0.394860
+Saved best model to ./experiment4_cnn_outputs/best_textcnn.pt
+Epoch 7/10 - train_loss: 0.325735
+Saved best model to ./experiment4_cnn_outputs/best_textcnn.pt
+Epoch 8/10 - train_loss: 0.272619
+Saved best model to ./experiment4_cnn_outputs/best_textcnn.pt
+Epoch 9/10 - train_loss: 0.223035
+Saved best model to ./experiment4_cnn_outputs/best_textcnn.pt
+Epoch 10/10 - train_loss: 0.189944
+Saved best model to ./experiment4_cnn_outputs/best_textcnn.pt
+Loaded best model for evaluation.
+[amazon] samples=38905 acc=0.6870 mean_msp=0.8672 ece=0.1848
+[dynasent] samples=4320 acc=0.3815 mean_msp=0.7444 ece=0.3641
+[imdb] samples=25000 acc=0.3529 mean_msp=0.8664 ece=0.5136
+[semeval] samples=20632 acc=0.3904 mean_msp=0.7784 ece=0.3880
+[sst5] samples=1067 acc=0.4686 mean_msp=0.7844 ece=0.3200
+[yelp] samples=30000 acc=0.6840 mean_msp=0.8786 ece=0.1946
+Saved metrics to: ./experiment4_cnn_outputs/experiment4_metrics.csv
+Saved predictions to: ./experiment4_cnn_outputs/experiment4_predictions.csv
+Done.

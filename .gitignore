@@ -1,14 +1,90 @@
+# Python/cache
+__pycache__/
+*.pyc
+.cache/
+
+# Environments
+OOD_NLP/ood_env/
+OOD_NLP/ood_env_broken/
 ood_env/
 ood_env_broken/
-__pycache__/
-.cache/
+venv/
+.env/
+
+# Secrets
+OOD_NLP/api.key
+api.key
+*.key
+.env
+
+# Large model/checkpoint files
+OOD_NLP/checkpoints/
+OOD_NLP/model_cache/
 checkpoints/
 model_cache/
 *.pt
 *.pth
 *.bin
+*.safetensors
 *.h5
+
+# Large dataset/cache files
+OOD_NLP/datasets/BOSS.zip
+OOD_NLP/datasets/raw/
+OOD_NLP/datasets/SentimentAnalysis/
+*.arrow
+*.zip
+
+# Generated arrays/logs
 *.npy
-*.csv
+*.npz
 *.log
+
+# Keep Slurm/job logs
+!*.out
+!*.err
+
+# Mac
 .DS_Store
+OOD_NLP/exp7_env/
+exp7_env/
+
+# Extra environment/model/cache folders
+OOD_NLP/exp7_env/
+OOD_NLP/ood_env/
+OOD_NLP/model_cache/
+OOD_NLP/checkpoints/
+OOD_NLP/wildtime_exp3/checkpoints/
+
+# Dataset/cache folders too large for GitHub
+OOD_NLP/datasets/raw/
+OOD_NLP/datasets/SentimentAnalysis/
+OOD_NLP/datasets/BOSS.zip
+
+# Extra environment/model/cache folders
+OOD_NLP/exp7_env/
+OOD_NLP/ood_env/
+OOD_NLP/model_cache/
+OOD_NLP/checkpoints/
+OOD_NLP/wildtime_exp3/checkpoints/
+
+# Dataset/cache folders too large for GitHub
+OOD_NLP/datasets/raw/
+OOD_NLP/datasets/SentimentAnalysis/
+OOD_NLP/datasets/BOSS.zip
+
+# Very large logits/data files
+OOD_NLP/results/evaluations/method/NameEntityRecognition/*/deberta-small/vanilla/logits/0/*token_logits.csv
+OOD_NLP/datasets/process/QuestionAnswering/searchqa/train.json
+OOD_NLP/wildtime_exp3/results/exp3_arxiv_val_logits.csv
+OOD_NLP/wildtime_exp3/Data/*.hdf5
+
+# Large generated outputs / processed datasets
+OOD_NLP/wildtime_exp3/results/
+OOD_NLP/experiment4_cnn_outputs/experiment4_predictions.csv
+OOD_NLP/experiment5_outputs/experiment5_prediction_scores.csv
+OOD_NLP/datasets/process/QuestionAnswering/searchqa/test.json
+OOD_NLP/datasets/process/QuestionAnswering/squad/train.json
+OOD_NLP/datasets/process/QuestionAnswering/newsqa/train.json
+OOD_NLP/datasets/process/NaturalLanguageInference/mnli/train.tsv
+OOD_NLP/datasets/process/SentimentAnalysis/dsc/train.tsv

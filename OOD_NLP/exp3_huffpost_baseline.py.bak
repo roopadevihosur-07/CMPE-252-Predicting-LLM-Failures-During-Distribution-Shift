@@ -1,0 +1,220 @@
+import os
+import math
+import random
+import numpy as np
+import torch
+from torch import nn
+from torch.utils.data import Dataset, DataLoader, ConcatDataset, Subset
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, AdamW
+from wild_time_data import load_dataset
+
+SEED = 0
+DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+
+TRAIN_YEARS = [2012, 2013, 2014, 2015]
+TEST_YEARS = [2016, 2017, 2018]
+
+DATA_DIR = "./wildtime_exp3/Data"
+RESULTS_DIR = "./wildtime_exp3/results"
+CKPT_DIR = "./wildtime_exp3/checkpoints"
+
+#MODEL_NAME = "distilbert-base-uncased"   # lightweight first run
+MODEL_NAME = "./model_cache/deberta-v3-small"
+BATCH_SIZE = 16
+MAX_LEN = 256
+LR = 2e-5
+EPOCHS = 3
+VAL_FRAC = 0.1
+
+os.makedirs(RESULTS_DIR, exist_ok=True)
+os.makedirs(CKPT_DIR, exist_ok=True)
+
+def set_seed(seed=0):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+
+class TextLabelDataset(Dataset):
+    def __init__(self, base_ds):
+        self.base_ds = base_ds
+
+    def __len__(self):
+        return len(self.base_ds)
+
+    def __getitem__(self, idx):
+        text, label = self.base_ds[idx]
+        return str(text), int(label)
+
+def make_concat_dataset(years, split):
+    parts = []
+    for y in years:
+        ds = load_dataset(
+            dataset_name="huffpost",
+            time_step=y,
+            split=split,
+            data_dir=DATA_DIR
+        )
+        parts.append(TextLabelDataset(ds))
+    return ConcatDataset(parts)
+
+def split_train_val(dataset, val_frac=0.1, seed=0):
+    n = len(dataset)
+    idxs = list(range(n))
+    rng = random.Random(seed)
+    rng.shuffle(idxs)
+    val_n = int(n * val_frac)
+    val_idxs = idxs[:val_n]
+    train_idxs = idxs[val_n:]
+    return Subset(dataset, train_idxs), Subset(dataset, val_idxs)
+
+def collate_fn(batch, tokenizer):
+    texts, labels = zip(*batch)
+    enc = tokenizer(
+        list(texts),
+        padding=True,
+        truncation=True,
+        max_length=MAX_LEN,
+        return_tensors="pt"
+    )
+    labels = torch.tensor(labels, dtype=torch.long)
+    return enc, labels
+
+def compute_ece(probs, labels, n_bins=15):
+    probs = np.asarray(probs)
+    labels = np.asarray(labels)
+    conf = probs.max(axis=1)
+    preds = probs.argmax(axis=1)
+    acc = (preds == labels).astype(float)
+
+    bins = np.linspace(0.0, 1.0, n_bins + 1)
+    ece = 0.0
+    for i in range(n_bins):
+        left, right = bins[i], bins[i + 1]
+        mask = (conf > left) & (conf <= right) if i > 0 else (conf >= left) & (conf <= right)
+        if mask.sum() == 0:
+            continue
+        bin_acc = acc[mask].mean()
+        bin_conf = conf[mask].mean()
+        ece += (mask.sum() / len(labels)) * abs(bin_acc - bin_conf)
+    return float(ece)
+
+def evaluate(model, loader):
+    model.eval()
+    all_probs = []
+    all_labels = []
+
+    with torch.no_grad():
+        for enc, labels in loader:
+            enc = {k: v.to(DEVICE) for k, v in enc.items()}
+            labels = labels.to(DEVICE)
+
+            out = model(**enc)
+            probs = torch.softmax(out.logits, dim=-1)
+
+            all_probs.append(probs.cpu().numpy())
+            all_labels.append(labels.cpu().numpy())
+
+    probs = np.concatenate(all_probs, axis=0)
+    labels = np.concatenate(all_labels, axis=0)
+
+    preds = probs.argmax(axis=1)
+    acc = float((preds == labels).mean() * 100.0)
+    ece = compute_ece(probs, labels)
+    return acc, ece
+
+def train():
+    set_seed(SEED)
+
+    tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+
+    full_train = make_concat_dataset(TRAIN_YEARS, split="train")
+    train_ds, val_ds = split_train_val(full_train, val_frac=VAL_FRAC, seed=SEED)
+
+    train_loader = DataLoader(
+        train_ds,
+        batch_size=BATCH_SIZE,
+        shuffle=True,
+        collate_fn=lambda b: collate_fn(b, tokenizer)
+    )
+    val_loader = DataLoader(
+        val_ds,
+        batch_size=BATCH_SIZE,
+        shuffle=False,
+        collate_fn=lambda b: collate_fn(b, tokenizer)
+    )
+
+    # infer number of labels from one year
+    sample_ds = load_dataset(
+        dataset_name="huffpost",
+        time_step=2012,
+        split="train",
+        data_dir=DATA_DIR
+    )
+    labels = set(int(sample_ds[i][1]) for i in range(min(len(sample_ds), 5000)))
+    num_labels = max(labels) + 1
+    model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME, num_labels=num_labels, local_files_only=True, ignore_mismatched_sizes=True).to(DEVICE)
+    optimizer = AdamW(model.parameters(), lr=LR)
+
+    best_val_acc = -1.0
+    best_path = os.path.join(CKPT_DIR, "exp3_huffpost_best.pt")
+
+    for epoch in range(EPOCHS):
+        model.train()
+        total_loss = 0.0
+        steps = 0
+
+        for enc, labels in train_loader:
+            enc = {k: v.to(DEVICE) for k, v in enc.items()}
+            labels = labels.to(DEVICE)
+
+            out = model(**enc, labels=labels)
+            loss = out.loss
+
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
+
+            total_loss += loss.item()
+            steps += 1
+
+        avg_loss = total_loss / max(steps, 1)
+        val_acc, val_ece = evaluate(model, val_loader)
+
+        print(f"Epoch {epoch+1}: loss={avg_loss:.4f}, val_acc={val_acc:.2f}, val_ece={val_ece:.4f}", flush=True)
+
+        if val_acc > best_val_acc:
+            best_val_acc = val_acc
+            torch.save(model.state_dict(), best_path)
+
+    print(f"Saved best model to {best_path}", flush=True)
+
+    # load best model
+    model.load_state_dict(torch.load(best_path, map_location=DEVICE))
+
+    out_path = os.path.join(RESULTS_DIR, "exp3_huffpost_results.csv")
+    with open(out_path, "w", encoding="utf-8") as f:
+        f.write("dataset,train_years,test_year,time_gap,accuracy,ece\n")
+        for year in TEST_YEARS:
+            test_ds = TextLabelDataset(load_dataset(
+                dataset_name="huffpost",
+                time_step=year,
+                split="test",
+                data_dir=DATA_DIR
+            ))
+            test_loader = DataLoader(
+                test_ds,
+                batch_size=BATCH_SIZE,
+                shuffle=False,
+                collate_fn=lambda b: collate_fn(b, tokenizer)
+            )
+
+            acc, ece = evaluate(model, test_loader)
+            gap = year - max(TRAIN_YEARS)
+            print(f"test_year={year}, gap={gap}, acc={acc:.2f}, ece={ece:.4f}", flush=True)
+            f.write(f"huffpost,\"{TRAIN_YEARS}\",{year},{gap},{acc:.4f},{ece:.6f}\n")
+
+    print(f"Saved results to {out_path}", flush=True)
+
+if __name__ == "__main__":
+    train()

@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/fs/atipa/home/017309357/252Proj/OOD_NLP/train_textcnn_experiment4.py", line 476, in <module>
+    main()
+  File "/fs/atipa/home/017309357/252Proj/OOD_NLP/train_textcnn_experiment4.py", line 277, in main
+    train_texts, train_labels_raw = read_tsv(train_path)
+  File "/fs/atipa/home/017309357/252Proj/OOD_NLP/train_textcnn_experiment4.py", line 62, in read_tsv
+    text_key, label_key = detect_columns(df.columns.tolist())
+  File "/fs/atipa/home/017309357/252Proj/OOD_NLP/train_textcnn_experiment4.py", line 52, in detect_columns
+    raise ValueError(f"Could not detect text/label columns. Found: {cols}")
+ValueError: Could not detect text/label columns. Found: ['Text', 'Label']

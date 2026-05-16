@@ -1,0 +1,26 @@
+Traceback (most recent call last):
+  File "/fs/atipa/home/017309357/252Proj/OOD_NLP/exp7_run_nli.py", line 394, in <module>
+    main()
+  File "/fs/atipa/home/017309357/252Proj/OOD_NLP/exp7_run_nli.py", line 382, in main
+    run_nli_experiment(
+  File "/fs/atipa/home/017309357/252Proj/OOD_NLP/exp7_run_nli.py", line 300, in run_nli_experiment
+    target_df = load_nli_tsv(target_path)
+  File "/fs/atipa/home/017309357/252Proj/OOD_NLP/exp7_run_nli.py", line 142, in load_nli_tsv
+    df["label"] = df["label"].astype(int)
+  File "/home/017309357/252Proj/OOD_NLP/ood_env/lib64/python3.9/site-packages/pandas/core/generic.py", line 6534, in astype
+    new_data = self._mgr.astype(dtype=dtype, copy=copy, errors=errors)
+  File "/home/017309357/252Proj/OOD_NLP/ood_env/lib64/python3.9/site-packages/pandas/core/internals/managers.py", line 414, in astype
+    return self.apply(
+  File "/home/017309357/252Proj/OOD_NLP/ood_env/lib64/python3.9/site-packages/pandas/core/internals/managers.py", line 354, in apply
+    applied = getattr(b, f)(**kwargs)
+  File "/home/017309357/252Proj/OOD_NLP/ood_env/lib64/python3.9/site-packages/pandas/core/internals/blocks.py", line 616, in astype
+    new_values = astype_array_safe(values, dtype, copy=copy, errors=errors)
+  File "/home/017309357/252Proj/OOD_NLP/ood_env/lib64/python3.9/site-packages/pandas/core/dtypes/astype.py", line 238, in astype_array_safe
+    new_values = astype_array(values, dtype, copy=copy)
+  File "/home/017309357/252Proj/OOD_NLP/ood_env/lib64/python3.9/site-packages/pandas/core/dtypes/astype.py", line 183, in astype_array
+    values = _astype_nansafe(values, dtype, copy=copy)
+  File "/home/017309357/252Proj/OOD_NLP/ood_env/lib64/python3.9/site-packages/pandas/core/dtypes/astype.py", line 101, in _astype_nansafe
+    return _astype_float_to_int_nansafe(arr, dtype, copy)
+  File "/home/017309357/252Proj/OOD_NLP/ood_env/lib64/python3.9/site-packages/pandas/core/dtypes/astype.py", line 146, in _astype_float_to_int_nansafe
+    raise IntCastingNaNError(
+pandas.errors.IntCastingNaNError: Cannot convert non-finite values (NA or inf) to integer

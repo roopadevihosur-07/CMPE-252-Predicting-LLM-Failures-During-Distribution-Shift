@@ -1,0 +1,5 @@
+model_name,task,source_dataset,target_dataset,shift_type,num_examples,accuracy,mean_confidence,ece,confidence_coverage
+./model_cache/Qwen2.5-1.5B-Instruct,toxic_detection,civil_comments,civil_comments,in_domain,100,0.87,96.33,0.09329999999999994,1.0
+./model_cache/Qwen2.5-1.5B-Instruct,toxic_detection,civil_comments,abuse_analyzer,domain_shift,100,0.53,95.55,0.4255,1.0
+./model_cache/Qwen2.5-1.5B-Instruct,toxic_detection,civil_comments,implicit_hate,domain_shift,100,0.47,95.5,0.4850000000000001,1.0
+./model_cache/Qwen2.5-1.5B-Instruct,toxic_detection,civil_comments,toxigen,domain_shift,100,0.64,95.45,0.31749999999999995,1.0

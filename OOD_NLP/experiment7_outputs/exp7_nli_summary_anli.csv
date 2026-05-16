@@ -1,0 +1,4 @@
+model_name,task,source_dataset,target_dataset,shift_type,num_examples,accuracy,mean_confidence,ece,confidence_coverage
+./model_cache/Qwen2.5-1.5B-Instruct,nli,anli,anli,in_domain,100,0.25,28.697674418604652,0.206046511627907,0.43
+./model_cache/Qwen2.5-1.5B-Instruct,nli,anli,contract_nli,domain_shift,100,0.26,64.52173913043478,0.7286956521739131,0.23
+./model_cache/Qwen2.5-1.5B-Instruct,nli,anli,wanli,domain_shift,100,0.38,63.3421052631579,0.4192105263157895,0.38

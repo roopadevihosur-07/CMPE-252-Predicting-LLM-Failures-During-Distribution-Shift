@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/fs/atipa/home/017309357/252Proj/OOD_NLP/exp7_run_nli.py", line 371, in <module>
+    main()
+  File "/fs/atipa/home/017309357/252Proj/OOD_NLP/exp7_run_nli.py", line 359, in main
+    run_nli_experiment(
+  File "/fs/atipa/home/017309357/252Proj/OOD_NLP/exp7_run_nli.py", line 270, in run_nli_experiment
+    train_df = load_nli_tsv(source_train_path)
+  File "/fs/atipa/home/017309357/252Proj/OOD_NLP/exp7_run_nli.py", line 113, in load_nli_tsv
+    raise ValueError(f"{path} must contain Premise, Hypothesis, Label columns")
+ValueError: ./datasets/process/NaturalLanguageInference/anli/train.tsv must contain Premise, Hypothesis, Label columns
