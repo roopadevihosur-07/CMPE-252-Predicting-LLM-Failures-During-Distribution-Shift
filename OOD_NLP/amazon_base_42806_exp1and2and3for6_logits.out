@@ -1227,4 +1227,4 @@ Saved logits to ./wildtime_exp3/results/exp3_arxiv_2022_logits.csv
 test_year=2022, gap=12, acc=36.82, ece=0.1715
 Saved results to ./wildtime_exp3/results/exp3_arxiv_results.csv
 Saved plots.
-===== Done =====
+Done
