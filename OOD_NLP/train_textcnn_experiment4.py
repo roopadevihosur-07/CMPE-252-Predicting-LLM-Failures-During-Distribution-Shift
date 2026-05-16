@@ -408,7 +408,7 @@ def main():
             all_prediction_rows.append(pred_row)
 
         print(
-            f"[{dataset_name}] samples={len(labels)} "
+            f"{dataset_name}: samples={len(labels)} "
             f"acc={metrics['accuracy']:.4f} "
             f"mean_msp={metrics['mean_msp']:.4f} "
             f"ece={metrics['ece']:.4f}",
