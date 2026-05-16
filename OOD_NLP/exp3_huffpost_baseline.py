@@ -15,22 +15,22 @@ from wild_time_data import load_dataset
 Seed = 0
 Device = "cuda" if torch.cuda.is_available() else "cpu"
 
-Train_Years = [2012, 2013, 2014, 2015]
-Test_Years = [2016, 2017, 2018]
+train_years = [2012, 2013, 2014, 2015]
+test_years = [2016, 2017, 2018]
 
-Data_Dir = "./wildtime_exp3/Data"
-Results_Dir = "./wildtime_exp3/results"
-Ckpt_Dir = "./wildtime_exp3/checkpoints"
+data_dir = "./wildtime_exp3/Data"
+results_dir = "./wildtime_exp3/results"
+ckpt_dir = "./wildtime_exp3/checkpoints"
 
-Model_Name = "./model_cache/deberta-v3-small"
-Batch_Size = 16
-Max_Len = 256
-LR = 2e-5
-Epochs = 3
-Val_Frac = 0.1
+model_name = "./model_cache/deberta-v3-small"
+batch_size = 16
+max_len = 256
+lr = 2e-5
+epochs = 3
+val_frac = 0.1
 
-os.makedirs(Results_Dir, exist_ok=True)
-os.makedirs(Ckpt_Dir, exist_ok=True)
+os.makedirs(results_dir, exist_ok=True)
+os.makedirs(ckpt_dir, exist_ok=True)
 
 def save_logits_csv(model, dataloader, device, out_csv):
     model.eval()
@@ -38,41 +38,29 @@ def save_logits_csv(model, dataloader, device, out_csv):
     all_labels = []
 
     with torch.no_grad():
-        for batch in dataloader:
-            if isinstance(batch, dict):
-                input_ids = batch["input_ids"].to(device)
-                attention_mask = batch["attention_mask"].to(device)
-                labels = batch["labels"].to(device)
+    for batch in dataloader:
+        if isinstance(batch, dict):
+            input_ids = batch["input_ids"]
+            attention_mask = batch["attention_mask"]
+            labels = batch["labels"]
 
-            elif isinstance(batch, (list, tuple)):
-                if len(batch) == 3:
-                    input_ids, attention_mask, labels = batch
-                    input_ids = input_ids.to(device)
-                    attention_mask = attention_mask.to(device)
-                    labels = labels.to(device)
+        elif len(batch) == 3:
+            input_ids, attention_mask, labels = batch
 
-                elif len(batch) == 2:
-                    first, second = batch
+        else:
+            first, labels = batch
+            input_ids = first["input_ids"]
+            attention_mask = first["attention_mask"]
 
-                    if hasattr(first, "keys") and "input_ids" in first and "attention_mask" in first:
-                        input_ids = first["input_ids"].to(device)
-                        attention_mask = first["attention_mask"].to(device)
-                        labels = second.to(device)
-                    else:
-                        raise ValueError(f"This is an unsupported 2-item batch format: first element type = {type(first)}")
+        input_ids = input_ids.to(device)
+        attention_mask = attention_mask.to(device)
+        labels = labels.to(device)
 
-                else:
-                    raise ValueError(f"This is an unsupported batch length: {len(batch)}")
+        outputs = model(input_ids=input_ids, attention_mask=attention_mask)
+        logits = outputs.logits
 
-            else:
-                raise ValueError(f"This is an unsupported batch type: {type(batch)}")
-
-            outputs = model(input_ids=input_ids, attention_mask=attention_mask)
-            logits = outputs.logits
-
-            all_logits.append(logits.detach().cpu())
-            all_labels.append(labels.detach().cpu())
-
+        all_logits.append(logits.detach().cpu())
+        all_labels.append(labels.detach().cpu())
     logits = torch.cat(all_logits, dim=0).numpy()
     labels = torch.cat(all_labels, dim=0).numpy()
 
@@ -105,7 +93,7 @@ class TextLabelDataset(Dataset):
 def make_concat_dataset(years, split):
     parts = []
     for y in years:
-        ds = load_dataset(dataset_name="huffpost", time_step=y,split=split,data_dir=Data_Dir)
+        ds = load_dataset(dataset_name="huffpost", time_step=y,split=split,data_dir=data_dir)
         parts.append(TextLabelDataset(ds))
     return ConcatDataset(parts)
 
@@ -121,7 +109,7 @@ def split_train_val(dataset, val_frac=0.1, seed=0):
 
 def collate_fn(batch, tokenizer):
     texts, labels = zip(*batch)
-    enc = tokenizer(list(texts), padding=True, truncation=True, max_length=Max_Len, return_tensors="pt")
+    enc = tokenizer(list(texts), padding=True, truncation=True, max_length=max_len, return_tensors="pt")
     labels = torch.tensor(labels, dtype=torch.long)
     return enc, labels
 
@@ -171,24 +159,24 @@ def evaluate(model, loader):
 def train():
     set_seed(Seed)
 
-    tokenizer = AutoTokenizer.from_pretrained(Model_Name)
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
 
-    full_train = make_concat_dataset(Train_Years, split="train")
-    train_ds, val_ds = split_train_val(full_train, val_frac=Val_Frac, seed=Seed)
+    full_train = make_concat_dataset(train_years, split="train")
+    train_ds, val_ds = split_train_val(full_train, val_frac=val_frac, seed=Seed)
 
-    train_loader = DataLoader(train_ds, batch_size=Batch_Size, shuffle=True, collate_fn=lambda b: collate_fn(b, tokenizer))
-    val_loader = DataLoader(val_ds, batch_size=Batch_Size, shuffle=False, collate_fn=lambda b: collate_fn(b, tokenizer))
+    train_loader = DataLoader(train_ds, batch_size=batch_size, shuffle=True, collate_fn=lambda b: collate_fn(b, tokenizer))
+    val_loader = DataLoader(val_ds, batch_size=batch_size, shuffle=False, collate_fn=lambda b: collate_fn(b, tokenizer))
 
-    sample_ds = load_dataset(dataset_name="huffpost", time_step=2012, split="train", data_dir=Data_Dir)
+    sample_ds = load_dataset(dataset_name="huffpost", time_step=2012, split="train", data_dir=data_dir)
     labels = set(int(sample_ds[i][1]) for i in range(min(len(sample_ds), 5000)))
     num_labels = max(labels) + 1
-    model = AutoModelForSequenceClassification.from_pretrained(Model_Name, num_labels=num_labels, local_files_only=True, ignore_mismatched_sizes=True).to(Device)
-    optimizer = AdamW(model.parameters(), lr=LR)
+    model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=num_labels, local_files_only=True, ignore_mismatched_sizes=True).to(Device)
+    optimizer = AdamW(model.parameters(), lr=lr)
 
     best_val_acc = -1.0
-    best_path = os.path.join(Ckpt_Dir, "exp3_huffpost_best.pt")
+    best_path = os.path.join(ckpt_dir, "exp3_huffpost_best.pt")
 
-    for epoch in range(Epochs):
+    for epoch in range(epochs):
         model.train()
         total_loss = 0.0
         steps = 0
@@ -222,18 +210,18 @@ def train():
 
     save_logits_csv(model, val_loader, Device, "./wildtime_exp3/results/exp3_huffpost_val_logits.csv")
 
-    out_path = os.path.join(Results_Dir, "exp3_huffpost_results.csv")
+    out_path = os.path.join(results_dir, "exp3_huffpost_results.csv")
     with open(out_path, "w", encoding="utf-8") as f:
         f.write("dataset,train_years,test_year,time_gap,accuracy,ece\n")
-        for year in Test_Years:
-            test_ds = TextLabelDataset(load_dataset(dataset_name="huffpost", time_step=year, split="test", data_dir=Data_Dir))
-            test_loader = DataLoader(test_ds, batch_size=Batch_Size, shuffle=False, collate_fn=lambda b: collate_fn(b, tokenizer))
+        for year in test_years:
+            test_ds = TextLabelDataset(load_dataset(dataset_name="huffpost", time_step=year, split="test", data_dir=data_dir))
+            test_loader = DataLoader(test_ds, batch_size=batch_size, shuffle=False, collate_fn=lambda b: collate_fn(b, tokenizer))
 
             acc, ece = evaluate(model, test_loader)
-            gap = year - max(Train_Years)
+            gap = year - max(train_years)
             save_logits_csv(model, test_loader, Device, f"./wildtime_exp3/results/exp3_huffpost_{year}_logits.csv")
             print(f"test_year={year}, gap={gap}, acc={acc:.2f}, ece={ece:.4f}", flush=True)
-            f.write(f"huffpost,\"{Train_Years}\",{year},{gap},{acc:.4f},{ece:.6f}\n")
+            f.write(f"huffpost,\"{train_years}\",{year},{gap},{acc:.4f},{ece:.6f}\n")
 
     print(f"Saved results to {out_path}", flush=True)
 
