@@ -5,7 +5,7 @@ from pathlib import Path
 EXP1_FILE = "amazon_base_112241_exp1.out"
 EXP2_FILE = "amazon_base_112291_exp2.out"
 
-TASK_METRIC = {
+task_metric = {
     "Sentiment": "acc",
     "Toxic Detection": "acc",
     "Natural Language Inference": "acc",
@@ -13,7 +13,7 @@ TASK_METRIC = {
     "Question Answering": "f1",
 }
 
-SOURCE_TO_TASK = {
+source_to_task = {
     "amazon": "Sentiment",
     "civil_comments": "Toxic Detection",
     "mnli": "Natural Language Inference",
@@ -21,7 +21,7 @@ SOURCE_TO_TASK = {
     "squad": "Question Answering",
 }
 
-EXP2_TARGETS = {
+exp2_targets = {
     "dynasent", "imdb", "semeval", "sst5", "yelp",
     "abuse_analyzer", "civil_comments", "implicit_hate", "toxigen",
     "anli", "contract_nli", "wanli",
@@ -45,13 +45,13 @@ def parse_exp1(path: str) -> pd.DataFrame:
         m = source_pat.match(line)
         if m:
             current_source = m.group(1)
-            current_task = SOURCE_TO_TASK[current_source]
+            current_task = source_to_task[current_source]
             continue
 
         m = metric_pat.match(line)
         if m and current_source and current_task:
             metric, target, score = m.group(1), m.group(2), float(m.group(3))
-            if metric == TASK_METRIC[current_task]:
+            if metric == task_metric[current_task]:
                 rows.append({
                     "task": current_task,
                     "source": current_source,
@@ -81,14 +81,14 @@ def parse_exp2(path: str) -> pd.DataFrame:
             current_target = None
             continue
 
-        if line in EXP2_TARGETS:
+        if line in exp2_targets:
             current_target = line
             continue
 
         m = metric_pat.match(line)
         if m and current_task and current_target:
             metric, eval_name, score = m.group(1), m.group(2), float(m.group(3))
-            if metric == TASK_METRIC[current_task] and eval_name == current_target:
+            if metric == task_metric[current_task] and eval_name == current_target:
                 rows.append({
                     "task": current_task,
                     "target": current_target,
