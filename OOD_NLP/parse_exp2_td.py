@@ -2,8 +2,8 @@ import re
 import pandas as pd
 from pathlib import Path
 
-EXP1_FILE = "amazon_base_112241_exp1.out"
-EXP2_FILE = "amazon_base_112291_exp2.out"
+exp1_file = "amazon_base_112241_exp1.out"
+exp2_file = "amazon_base_112291_exp2.out"
 
 task_metric = {
     "Sentiment": "acc",
@@ -99,7 +99,6 @@ def parse_exp2(path: str) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 def compute_td(exp1: pd.DataFrame, exp2: pd.DataFrame, tau: float = 5.0) -> pd.DataFrame:
-    # Convert NER F1 from 0-1 to 0-100 so threshold is comparable
     exp1 = exp1.copy()
     exp2 = exp2.copy()
 
@@ -139,8 +138,8 @@ def compute_td(exp1: pd.DataFrame, exp2: pd.DataFrame, tau: float = 5.0) -> pd.D
     return df.sort_values(["task", "source_ds", "target_ds"]).reset_index(drop=True)
 
 def main():
-    exp1 = parse_exp1(EXP1_FILE)
-    exp2 = parse_exp2(EXP2_FILE)
+    exp1 = parse_exp1(exp1_file)
+    exp2 = parse_exp2(exp2_file)
 
     print("\nParsed Exp 1:")
     print(exp1.to_string(index=False))
