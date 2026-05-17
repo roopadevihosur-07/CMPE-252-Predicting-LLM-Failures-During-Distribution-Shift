@@ -55,13 +55,11 @@ def softmax_numpy(logits: np.ndarray) -> np.ndarray:
 
 
 def infer_logits_from_df(df: pd.DataFrame) -> np.ndarray:
-    # Case 1: explicit logit_0, logit_1, ...
     logit_cols = [c for c in df.columns if c.startswith("logit_")]
     if len(logit_cols) > 0:
         logit_cols = sorted(logit_cols, key=lambda x: int(x.split("_")[1]))
         return df[logit_cols].values.astype(np.float32)
 
-    # Case 2: single JSON-like logits column
     if "logits" in df.columns:
         logits = []
         for item in df["logits"].tolist():
@@ -150,16 +148,10 @@ def main():
     if args.target_names is not None and len(args.target_names) != len(args.target_csvs):
         raise ValueError("--target_names must have the same length as --target_csvs")
 
-    # -----------------------------
-    # Load validation set
-    # -----------------------------
     val_df = pd.read_csv(args.validation_csv)
     val_logits = infer_logits_from_df(val_df)
     val_labels = infer_labels_from_df(val_df)
 
-    # -----------------------------
-    # Fit temperature
-    # -----------------------------
     scaler = TemperatureScaler(init_temp=1.0)
 
     val_ece_before, val_probs_before = evaluate_ece(val_logits, val_labels, n_bins=args.n_bins)
@@ -172,13 +164,9 @@ def main():
     print(f"Validation ECE after  = {val_ece_after:.6f}", flush=True)
     print(f"Validation ECE reduction = {val_ece_before - val_ece_after:.6f}", flush=True)
 
-    # Save temperature
     with open(os.path.join(args.output_dir, "temperature.json"), "w", encoding="utf-8") as f:
         json.dump({"temperature": learned_temp}, f, indent=2)
 
-    # -----------------------------
-    # Evaluate target distributions
-    # -----------------------------
     rows = []
 
     for i, target_csv in enumerate(args.target_csvs):
@@ -213,7 +201,6 @@ def main():
             flush=True
         )
 
-        # save per-example confidence before/after
         out_df = pd.DataFrame({
             "true_label": labels,
             "pred_before": probs_before.argmax(axis=1),
